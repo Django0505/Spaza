@@ -31,8 +31,29 @@ QUnit.test("testing most selling category function", function(assert){
 
 QUnit.test("testing least selling category function", function(assert){
 
-var objToTest = {"freshFruit":12,"freshFlowers":122,"team":202};
+    var objToTest = {"freshFruit":12,"freshFlowers":122,"team":202};
     var result4 = pm.returnsLeastSellingCat(objToTest);
     assert.deepEqual(result4, {"name":"freshFruit","qty": 12});
     
 });
+//most regular sales
+QUnit.test("testing most regular sales function",function(assert){
+    var objToTest = {"freshFruit":12,"flowers":122,"team":19};
+    var result5 = pm.returnsMostRegularSales(objToTest);
+    assert.deepEqual(result5,{"name":"flowers","days sold": 122});
+});
+//least regular sales
+QUnit.test('least regular sales', function(assert) {
+    var objToTest = {"freshFruit":12,"flowers":122,"team":19};
+    var result6 = pm.returnsLeastRegularSales(objToTest);
+    assert.deepEqual(result6,{"name":"freshFruit","days sold": 12});
+});
+
+
+
+
+
+
+
+
+

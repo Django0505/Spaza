@@ -1,6 +1,0 @@
-QUnit.test("testing mostSold function", function(assert){
-    var objToTest = {apples:1,bananas:3,grapes:8}
-   // var value = soldMost(objToTest);
-    // is the result as we expected?
-    assert.equal(mostSold(objToTest),"name : grapes, qty : 8");
-});
