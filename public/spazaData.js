@@ -1,4 +1,4 @@
-var data = [{
+[{
     "Day": "Sunday",
     "Date": "1-Feb",
     "stock item": "Milk 1l",
@@ -2686,4 +2686,4 @@ var data = [{
     "stock item": "Mixed Sweets 5s",
     "No sold": 12,
     "Sales Price": "R3.00"
-}];
+}]

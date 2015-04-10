@@ -1,0 +1,19 @@
+[{
+    "category": "stapleFoods",
+    "quantity": 444
+}, {
+    "category": "nonPerishables",
+    "quantity": 278
+}, {
+    "category": "drinks",
+    "quantity": 328
+}, {
+    "category": "bathroom",
+    "quantity": 76
+}, {
+    "category": "fruit",
+    "quantity": 228
+}, {
+    "category": "giftItems",
+    "quantity": 220
+}]

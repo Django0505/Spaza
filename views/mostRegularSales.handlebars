@@ -1,0 +1,19 @@
+<h2>Most Regular Sales</h2>
+<table class="table">
+	   <thead>
+        
+          <th>Product</th>
+          <th>Quantity Sold</th>
+          
+      
+      </thead>
+      <tbody>
+      	    {{#each mostSold}}
+			<tr>
+			    <td>{{product}}</td>
+			    <td>{{soldNum}}</td>
+			</tr>
+		    {{/each}}
+      </tbody>
+
+</table>

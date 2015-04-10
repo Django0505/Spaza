@@ -1,0 +1,19 @@
+<h2>Most Selling Category</h2>
+<table class="table">
+	   <thead>
+        
+          <th>Category</th>
+          <th>Quantity Sold</th>
+          
+      
+      </thead>
+      <tbody>
+      	    {{#each mostSellingCategory}}
+			<tr>
+			    <td>{{name}}</td>
+			    <td>{{qty}}</td>
+			</tr>
+		    {{/each}}
+      </tbody>
+
+</table>
