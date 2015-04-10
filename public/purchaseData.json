@@ -1,0 +1,1226 @@
+[
+  {
+    "Shop": "Makro",
+    "Date": "23-Jan",
+    "Item": "Chakalaka Can",
+    "Quantity": 3,
+    "Cost": "7.00",
+    "Total Cost": "21.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "23-Jan",
+    "Item": "Coke 500ml",
+    "Quantity": 3,
+    "Cost": "3.50",
+    "Total Cost": "10.50"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "23-Jan",
+    "Item": "Cream Soda 500ml",
+    "Quantity": 4,
+    "Cost": "4.50",
+    "Total Cost": "18.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "23-Jan",
+    "Item": "Fanta 500ml",
+    "Quantity": 2,
+    "Cost": "4.50",
+    "Total Cost": "9.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "23-Jan",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 2,
+    "Cost": "5.00",
+    "Total Cost": "10.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "23-Jan",
+    "Item": "Imasi",
+    "Quantity": 1,
+    "Cost": "17.00",
+    "Total Cost": "17.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "23-Jan",
+    "Item": "Iwisa Pap 5kg",
+    "Quantity": 3,
+    "Cost": "20.00",
+    "Total Cost": "60.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "23-Jan",
+    "Item": "Milk 1l",
+    "Quantity": 4,
+    "Cost": "7.00",
+    "Total Cost": "28.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "23-Jan",
+    "Item": "Top Class Soy Mince",
+    "Quantity": 5,
+    "Cost": "8.00",
+    "Total Cost": "40.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "28-Jan",
+    "Item": "Bananas - loose",
+    "Quantity": 4,
+    "Cost": "1.00",
+    "Total Cost": "4.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "28-Jan",
+    "Item": "Apples - loose",
+    "Quantity": 10,
+    "Cost": "1.50",
+    "Total Cost": "15.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "28-Jan",
+    "Item": "Mixed Sweets 5s",
+    "Quantity": 60,
+    "Cost": "3.00",
+    "Total Cost": "180.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "28-Jan",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 1,
+    "Cost": "20.00",
+    "Total Cost": "20.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "28-Jan",
+    "Item": "Soap Bar",
+    "Quantity": 3,
+    "Cost": "3.00",
+    "Total Cost": "9.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "28-Jan",
+    "Item": "Bread",
+    "Quantity": 30,
+    "Cost": "9.00",
+    "Total Cost": "270.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "28-Jan",
+    "Item": "Chakalaka Can",
+    "Quantity": 15,
+    "Cost": "7.00",
+    "Total Cost": "105.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "28-Jan",
+    "Item": "Coke 500ml",
+    "Quantity": 36,
+    "Cost": "3.50",
+    "Total Cost": "126.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "28-Jan",
+    "Item": "Cream Soda 500ml",
+    "Quantity": 24,
+    "Cost": "4.50",
+    "Total Cost": "108.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "28-Jan",
+    "Item": "Fanta 500ml",
+    "Quantity": 24,
+    "Cost": "4.50",
+    "Total Cost": "108.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "28-Jan",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 15,
+    "Cost": "5.00",
+    "Total Cost": "75.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "28-Jan",
+    "Item": "Imasi",
+    "Quantity": 15,
+    "Cost": "17.00",
+    "Total Cost": "255.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "28-Jan",
+    "Item": "Iwisa Pap 5kg",
+    "Quantity": 15,
+    "Cost": "20.00",
+    "Total Cost": "300.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "28-Jan",
+    "Item": "Milk 1l",
+    "Quantity": 25,
+    "Cost": "7.00",
+    "Total Cost": "175.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "28-Jan",
+    "Item": "Top Class Soy Mince",
+    "Quantity": 10,
+    "Cost": "8.00",
+    "Total Cost": "80.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "02-Feb",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 1,
+    "Cost": "20.00",
+    "Total Cost": "20.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "02-Feb",
+    "Item": "Soap Bar",
+    "Quantity": 3,
+    "Cost": "3.00",
+    "Total Cost": "9.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "03-Feb",
+    "Item": "Bananas - loose",
+    "Quantity": 12,
+    "Cost": "1.00",
+    "Total Cost": "12.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "03-Feb",
+    "Item": "Apples - loose",
+    "Quantity": 100,
+    "Cost": "1.50",
+    "Total Cost": "150.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "03-Feb",
+    "Item": "Mixed Sweets 5s",
+    "Quantity": 240,
+    "Cost": "3.00",
+    "Total Cost": "720.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "04-Feb",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 2,
+    "Cost": "20.00",
+    "Total Cost": "40.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "04-Feb",
+    "Item": "Soap Bar",
+    "Quantity": 5,
+    "Cost": "3.00",
+    "Total Cost": "15.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "04-Feb",
+    "Item": "Bread",
+    "Quantity": 4,
+    "Cost": "11.00",
+    "Total Cost": "44.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "04-Feb",
+    "Item": "Imasi",
+    "Quantity": 4,
+    "Cost": "24.00",
+    "Total Cost": "96.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "06-Feb",
+    "Item": "Bananas - loose",
+    "Quantity": 8,
+    "Cost": "1.00",
+    "Total Cost": "8.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "06-Feb",
+    "Item": "Apples - loose",
+    "Quantity": 100,
+    "Cost": "1.50",
+    "Total Cost": "150.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "06-Feb",
+    "Item": "Mixed Sweets 5s",
+    "Quantity": 150,
+    "Cost": "3.00",
+    "Total Cost": "450.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "06-Feb",
+    "Item": "Soap Bar",
+    "Quantity": 5,
+    "Cost": "3.00",
+    "Total Cost": "15.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "6-Feb",
+    "Item": "Bread",
+    "Quantity": 30,
+    "Cost": "9.00",
+    "Total Cost": "270.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "6-Feb",
+    "Item": "Chakalaka Can",
+    "Quantity": 15,
+    "Cost": "7.00",
+    "Total Cost": "105.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "6-Feb",
+    "Item": "Coke 500ml",
+    "Quantity": 36,
+    "Cost": "3.50",
+    "Total Cost": "126.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "6-Feb",
+    "Item": "Cream Soda 500ml",
+    "Quantity": 18,
+    "Cost": "4.50",
+    "Total Cost": "81.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "6-Feb",
+    "Item": "Fanta 500ml",
+    "Quantity": 24,
+    "Cost": "4.50",
+    "Total Cost": "108.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "6-Feb",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 15,
+    "Cost": "5.00",
+    "Total Cost": "75.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "6-Feb",
+    "Item": "Imasi",
+    "Quantity": 25,
+    "Cost": "17.00",
+    "Total Cost": "425.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "6-Feb",
+    "Item": "Iwisa Pap 5kg",
+    "Quantity": 5,
+    "Cost": "20.00",
+    "Total Cost": "100.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "6-Feb",
+    "Item": "Milk 1l",
+    "Quantity": 10,
+    "Cost": "7.00",
+    "Total Cost": "70.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "6-Feb",
+    "Item": "Top Class Soy Mince",
+    "Quantity": 10,
+    "Cost": "8.00",
+    "Total Cost": "80.00"
+  },
+  {
+    "Shop": "ChinaTown",
+    "Date": "09-Feb",
+    "Item": "Rose (plastic)",
+    "Quantity": 20,
+    "Cost": "10.00",
+    "Total Cost": "200.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "09-Feb",
+    "Item": "Milk 1l",
+    "Quantity": 3,
+    "Cost": "9.50",
+    "Total Cost": "28.50"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "10-Feb",
+    "Item": "Bananas - loose",
+    "Quantity": 4,
+    "Cost": "1.00",
+    "Total Cost": "4.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "10-Feb",
+    "Item": "Apples - loose",
+    "Quantity": 20,
+    "Cost": "1.50",
+    "Total Cost": "30.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "10-Feb",
+    "Item": "Mixed Sweets 5s",
+    "Quantity": 150,
+    "Cost": "3.00",
+    "Total Cost": "450.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "10-Feb",
+    "Item": "Bread",
+    "Quantity": 10,
+    "Cost": "9.00",
+    "Total Cost": "90.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "10-Feb",
+    "Item": "Chakalaka Can",
+    "Quantity": 15,
+    "Cost": "7.00",
+    "Total Cost": "105.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "10-Feb",
+    "Item": "Coke 500ml",
+    "Quantity": 18,
+    "Cost": "3.50",
+    "Total Cost": "63.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "10-Feb",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 5,
+    "Cost": "5.00",
+    "Total Cost": "25.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "10-Feb",
+    "Item": "Heart Chocolates",
+    "Quantity": 20,
+    "Cost": "25.00",
+    "Total Cost": "500.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "10-Feb",
+    "Item": "Imasi",
+    "Quantity": 10,
+    "Cost": "17.00",
+    "Total Cost": "170.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "10-Feb",
+    "Item": "Iwisa Pap 5kg",
+    "Quantity": 5,
+    "Cost": "20.00",
+    "Total Cost": "100.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "10-Feb",
+    "Item": "Milk 1l",
+    "Quantity": 10,
+    "Cost": "7.00",
+    "Total Cost": "70.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "10-Feb",
+    "Item": "Top Class Soy Mince",
+    "Quantity": 15,
+    "Cost": "8.00",
+    "Total Cost": "120.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "11-Feb",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 2,
+    "Cost": "20.00",
+    "Total Cost": "40.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "11-Feb",
+    "Item": "Valentine Cards",
+    "Quantity": 20,
+    "Cost": "2.00",
+    "Total Cost": "40.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "12-Feb",
+    "Item": "Milk 1l",
+    "Quantity": 3,
+    "Cost": "9.50",
+    "Total Cost": "28.50"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "13-Feb",
+    "Item": "Bananas - loose",
+    "Quantity": 4,
+    "Cost": "1.00",
+    "Total Cost": "4.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "13-Feb",
+    "Item": "Mixed Sweets 5s",
+    "Quantity": 50,
+    "Cost": "3.00",
+    "Total Cost": "150.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "13-Feb",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 3,
+    "Cost": "20.00",
+    "Total Cost": "60.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "13-Feb",
+    "Item": "Soap Bar",
+    "Quantity": 5,
+    "Cost": "3.00",
+    "Total Cost": "15.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "13-Feb",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 5,
+    "Cost": "8.50",
+    "Total Cost": "42.50"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "13-Feb",
+    "Item": "Bread",
+    "Quantity": 5,
+    "Cost": "9.00",
+    "Total Cost": "45.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "13-Feb",
+    "Item": "Coke 500ml",
+    "Quantity": 12,
+    "Cost": "3.50",
+    "Total Cost": "42.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "13-Feb",
+    "Item": "Fanta 500ml",
+    "Quantity": 12,
+    "Cost": "4.50",
+    "Total Cost": "54.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "13-Feb",
+    "Item": "Imasi",
+    "Quantity": 20,
+    "Cost": "17.00",
+    "Total Cost": "340.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "13-Feb",
+    "Item": "Milk 1l",
+    "Quantity": 15,
+    "Cost": "7.00",
+    "Total Cost": "105.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "13-Feb",
+    "Item": "Top Class Soy Mince",
+    "Quantity": 5,
+    "Cost": "8.00",
+    "Total Cost": "40.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "14-Feb",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 1,
+    "Cost": "20.00",
+    "Total Cost": "20.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "14-Feb",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 2,
+    "Cost": "8.50",
+    "Total Cost": "17.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "16-Feb",
+    "Item": "Chakalaka Can",
+    "Quantity": 2,
+    "Cost": "8.50",
+    "Total Cost": "17.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "16-Feb",
+    "Item": "Cream Soda 500ml",
+    "Quantity": 2,
+    "Cost": "7.50",
+    "Total Cost": "15.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "16-Feb",
+    "Item": "Fanta 500ml",
+    "Quantity": 1,
+    "Cost": "6.50",
+    "Total Cost": "6.50"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "16-Feb",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 2,
+    "Cost": "8.50",
+    "Total Cost": "17.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "16-Feb",
+    "Item": "Iwisa Pap 5kg",
+    "Quantity": 1,
+    "Cost": "30.00",
+    "Total Cost": "30.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "16-Feb",
+    "Item": "Milk 1l",
+    "Quantity": 6,
+    "Cost": "9.50",
+    "Total Cost": "57.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "17-Feb",
+    "Item": "Apples - loose",
+    "Quantity": 60,
+    "Cost": "1.50",
+    "Total Cost": "90.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "17-Feb",
+    "Item": "Mixed Sweets 5s",
+    "Quantity": 12,
+    "Cost": "3.00",
+    "Total Cost": "36.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "17-Feb",
+    "Item": "Bread",
+    "Quantity": 15,
+    "Cost": "9.00",
+    "Total Cost": "135.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "17-Feb",
+    "Item": "Chakalaka Can",
+    "Quantity": 10,
+    "Cost": "7.00",
+    "Total Cost": "70.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "17-Feb",
+    "Item": "Coke 500ml",
+    "Quantity": 24,
+    "Cost": "3.50",
+    "Total Cost": "84.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "17-Feb",
+    "Item": "Cream Soda 500ml",
+    "Quantity": 12,
+    "Cost": "4.50",
+    "Total Cost": "54.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "17-Feb",
+    "Item": "Fanta 500ml",
+    "Quantity": 12,
+    "Cost": "4.50",
+    "Total Cost": "54.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "17-Feb",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 10,
+    "Cost": "5.00",
+    "Total Cost": "50.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "17-Feb",
+    "Item": "Imasi",
+    "Quantity": 15,
+    "Cost": "17.00",
+    "Total Cost": "255.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "17-Feb",
+    "Item": "Iwisa Pap 5kg",
+    "Quantity": 5,
+    "Cost": "20.00",
+    "Total Cost": "100.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "17-Feb",
+    "Item": "Milk 1l",
+    "Quantity": 15,
+    "Cost": "7.00",
+    "Total Cost": "105.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "17-Feb",
+    "Item": "Top Class Soy Mince",
+    "Quantity": 5,
+    "Cost": "8.00",
+    "Total Cost": "40.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "18-Feb",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 1,
+    "Cost": "20.00",
+    "Total Cost": "20.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "18-Feb",
+    "Item": "Soap Bar",
+    "Quantity": 5,
+    "Cost": "3.00",
+    "Total Cost": "15.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "19-Feb",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 2,
+    "Cost": "20.00",
+    "Total Cost": "40.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "19-Feb",
+    "Item": "Milk 1l",
+    "Quantity": 1,
+    "Cost": "9.50",
+    "Total Cost": "9.50"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "20-Feb",
+    "Item": "Bananas - loose",
+    "Quantity": 20,
+    "Cost": "1.00",
+    "Total Cost": "20.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "20-Feb",
+    "Item": "Apples - loose",
+    "Quantity": 90,
+    "Cost": "1.50",
+    "Total Cost": "135.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "20-Feb",
+    "Item": "Mixed Sweets 5s",
+    "Quantity": 20,
+    "Cost": "3.00",
+    "Total Cost": "60.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "20-Feb",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 2,
+    "Cost": "20.00",
+    "Total Cost": "40.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "20-Feb",
+    "Item": "Soap Bar",
+    "Quantity": 3,
+    "Cost": "3.00",
+    "Total Cost": "9.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "20-Feb",
+    "Item": "Bread",
+    "Quantity": 10,
+    "Cost": "9.00",
+    "Total Cost": "90.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "20-Feb",
+    "Item": "Imasi",
+    "Quantity": 10,
+    "Cost": "17.00",
+    "Total Cost": "170.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "20-Feb",
+    "Item": "Iwisa Pap 5kg",
+    "Quantity": 5,
+    "Cost": "20.00",
+    "Total Cost": "100.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "20-Feb",
+    "Item": "Milk 1l",
+    "Quantity": 15,
+    "Cost": "7.00",
+    "Total Cost": "105.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "20-Feb",
+    "Item": "Top Class Soy Mince",
+    "Quantity": 10,
+    "Cost": "8.00",
+    "Total Cost": "80.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "23-Feb",
+    "Item": "Chakalaka Can",
+    "Quantity": 3,
+    "Cost": "9.00",
+    "Total Cost": "27.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "24-Feb",
+    "Item": "Bananas - loose",
+    "Quantity": 10,
+    "Cost": "1.00",
+    "Total Cost": "10.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "24-Feb",
+    "Item": "Apples - loose",
+    "Quantity": 90,
+    "Cost": "1.50",
+    "Total Cost": "135.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "24-Feb",
+    "Item": "Mixed Sweets 5s",
+    "Quantity": 8,
+    "Cost": "3.00",
+    "Total Cost": "24.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "24-Feb",
+    "Item": "Bread",
+    "Quantity": 15,
+    "Cost": "9.00",
+    "Total Cost": "135.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "24-Feb",
+    "Item": "Chakalaka Can",
+    "Quantity": 10,
+    "Cost": "7.00",
+    "Total Cost": "70.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "24-Feb",
+    "Item": "Coke 500ml",
+    "Quantity": 18,
+    "Cost": "3.50",
+    "Total Cost": "63.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "24-Feb",
+    "Item": "Cream Soda 500ml",
+    "Quantity": 6,
+    "Cost": "4.50",
+    "Total Cost": "27.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "24-Feb",
+    "Item": "Fanta 500ml",
+    "Quantity": 6,
+    "Cost": "4.50",
+    "Total Cost": "27.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "24-Feb",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 10,
+    "Cost": "5.00",
+    "Total Cost": "50.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "24-Feb",
+    "Item": "Imasi",
+    "Quantity": 15,
+    "Cost": "17.00",
+    "Total Cost": "255.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "24-Feb",
+    "Item": "Milk 1l",
+    "Quantity": 20,
+    "Cost": "7.00",
+    "Total Cost": "140.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "24-Feb",
+    "Item": "Top Class Soy Mince",
+    "Quantity": 15,
+    "Cost": "8.00",
+    "Total Cost": "120.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "25-Feb",
+    "Item": "Soap Bar",
+    "Quantity": 5,
+    "Cost": "3.00",
+    "Total Cost": "15.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "26-Feb",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 2,
+    "Cost": "20.00",
+    "Total Cost": "40.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "26-Feb",
+    "Item": "Soap Bar",
+    "Quantity": 5,
+    "Cost": "3.00",
+    "Total Cost": "15.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "26-Feb",
+    "Item": "Bread",
+    "Quantity": 1,
+    "Cost": "11.00",
+    "Total Cost": "11.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "26-Feb",
+    "Item": "Fanta 500ml",
+    "Quantity": 2,
+    "Cost": "6.50",
+    "Total Cost": "13.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "26-Feb",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 1,
+    "Cost": "8.50",
+    "Total Cost": "8.50"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "26-Feb",
+    "Item": "Iwisa Pap 5kg",
+    "Quantity": 1,
+    "Cost": "30.00",
+    "Total Cost": "30.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "27-Feb",
+    "Item": "Bananas - loose",
+    "Quantity": 10,
+    "Cost": "1.00",
+    "Total Cost": "10.00"
+  },
+  {
+    "Shop": "Epping Market",
+    "Date": "27-Feb",
+    "Item": "Apples - loose",
+    "Quantity": 60,
+    "Cost": "1.50",
+    "Total Cost": "90.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "27-Feb",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 5,
+    "Cost": "20.00",
+    "Total Cost": "100.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "27-Feb",
+    "Item": "Soap Bar",
+    "Quantity": 5,
+    "Cost": "3.00",
+    "Total Cost": "15.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "27-Feb",
+    "Item": "Bread",
+    "Quantity": 20,
+    "Cost": "9.00",
+    "Total Cost": "180.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "27-Feb",
+    "Item": "Chakalaka Can",
+    "Quantity": 15,
+    "Cost": "7.00",
+    "Total Cost": "105.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "27-Feb",
+    "Item": "Coke 500ml",
+    "Quantity": 24,
+    "Cost": "3.50",
+    "Total Cost": "84.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "27-Feb",
+    "Item": "Cream Soda 500ml",
+    "Quantity": 12,
+    "Cost": "4.50",
+    "Total Cost": "54.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "27-Feb",
+    "Item": "Fanta 500ml",
+    "Quantity": 12,
+    "Cost": "4.50",
+    "Total Cost": "54.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "27-Feb",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 15,
+    "Cost": "5.00",
+    "Total Cost": "75.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "27-Feb",
+    "Item": "Imasi",
+    "Quantity": 15,
+    "Cost": "17.00",
+    "Total Cost": "255.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "27-Feb",
+    "Item": "Iwisa Pap 5kg",
+    "Quantity": 10,
+    "Cost": "20.00",
+    "Total Cost": "200.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "27-Feb",
+    "Item": "Milk 1l",
+    "Quantity": 20,
+    "Cost": "7.00",
+    "Total Cost": "140.00"
+  },
+  {
+    "Shop": "Makro",
+    "Date": "27-Feb",
+    "Item": "Top Class Soy Mince",
+    "Quantity": 15,
+    "Cost": "8.00",
+    "Total Cost": "120.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "28-Feb",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 2,
+    "Cost": "20.00",
+    "Total Cost": "40.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "28-Feb",
+    "Item": "Soap Bar",
+    "Quantity": 3,
+    "Cost": "3.00",
+    "Total Cost": "9.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "28-Feb",
+    "Item": "Chakalaka Can",
+    "Quantity": 3,
+    "Cost": "8.50",
+    "Total Cost": "25.50"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "28-Feb",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 2,
+    "Cost": "8.50",
+    "Total Cost": "17.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "28-Feb",
+    "Item": "Top Class Soy Mince",
+    "Quantity": 5,
+    "Cost": "11.00",
+    "Total Cost": "55.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "01-Mar",
+    "Item": "Shampoo 1 litre",
+    "Quantity": 2,
+    "Cost": "20.00",
+    "Total Cost": "40.00"
+  },
+  {
+    "Shop": "HomeMade",
+    "Date": "01-Mar",
+    "Item": "Soap Bar",
+    "Quantity": 5,
+    "Cost": "3.00",
+    "Total Cost": "15.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "01-Mar",
+    "Item": "Chakalaka Can",
+    "Quantity": 3,
+    "Cost": "8.50",
+    "Total Cost": "25.50"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "01-Mar",
+    "Item": "Gold Dish Vegetable Curry Can",
+    "Quantity": 2,
+    "Cost": "8.50",
+    "Total Cost": "17.00"
+  },
+  {
+    "Shop": "Joe Spaza Shop",
+    "Date": "01-Mar",
+    "Item": "Top Class Soy Mince",
+    "Quantity": 3,
+    "Cost": "11.00",
+    "Total Cost": "33.00"
+  }
+]

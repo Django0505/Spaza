@@ -1,0 +1,74 @@
+[
+    { 
+      "product":"Chakalaka Can",
+      "soldNum": 94
+    },
+    {
+      "product":"Coke 500ml",
+      "soldNum": 171
+    },
+    {
+      "product":"Cream Soda 500ml",
+      "soldNum": 78
+    },
+    {
+      "product":"Fanta 500ml",
+      "soldNum": 95
+    },
+    {
+      "product":"Gold Dish Vegetable Curry Can",
+      "soldNum": 86
+    },
+    {
+      "product":"Imasi",
+      "soldNum": 130
+    },
+    {
+      "product":"Iwisa Pap 5kg",
+      "soldNum": 50
+    },
+    {
+      "product":"Milk 1l",
+      "soldNum": 147
+    },
+    {
+      "product":"Top Class Soy Mince",
+      "soldNum": 98
+    },
+    {
+      "product":"Bananas - loose",
+      "soldNum": 72
+    },
+    {
+      "product":"Apples - loose",
+      "soldNum": 530
+    },
+    {
+      "product":"Mixed Sweets 5s",
+      "soldNum": 690
+    },
+    {
+      "product":"Shampoo 1 litre",
+      "soldNum": 26
+    },
+    {
+      "product":"Soap Bar",
+      "soldNum": 52
+    },
+    {
+      "product":"Bread",
+      "soldNum": 140
+    },
+    {
+      "product":"Rose (plastic)",
+      "soldNum": 20
+    },
+    {
+      "product":"Heart Chocolates",
+      "soldNum": 20
+    },
+    {
+      "product":"Valentine Cards",
+      "soldNum": 20 
+    }
+  ]

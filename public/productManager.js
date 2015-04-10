@@ -103,7 +103,7 @@ exports.returnsMostRegularSales = function(daysSoldMap) {
         return {
             name: key,
             days: Number(daysSoldMap[key])
-        }
+        };
     });
 
     console.log(products);
@@ -136,7 +136,7 @@ exports.returnsMostRegularSales = function(daysSoldMap) {
         if (sortedProducts[i].days === sortedProducts[0].days) {
             regulars.push(sortedProducts[i]);
         }
-    };
+    }
 
     var maxValue = 0; // assuming positive numbers only
     for (var key in daysSoldMap) {
