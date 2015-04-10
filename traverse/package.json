@@ -1,0 +1,14 @@
+{
+  "name": "traverse",
+  "version": "0.0.0",
+  "description": "Wildlife",
+  "main": "browser.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "Django0505",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "express-handlebars": "~2.0.0"
+  }
+}
