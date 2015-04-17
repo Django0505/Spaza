@@ -107,12 +107,14 @@ app.get('/*', function(req, res) {
 
 
 
+var port = process.env.PORT || 3000;
+var server = app.listen(port, function () {
 
+  var host = server.address().address
+  var port = server.address().port
 
-
-app.listen(3000);
 console.log('doing my thing at http://3000');
-
+});
 
 
 
