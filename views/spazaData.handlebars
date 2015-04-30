@@ -1,4 +1,4 @@
-<h2>Spaza Data</h2>
+<h2>Spaza Sales</h2>
 <table class="table">
 	   <thead>
         
@@ -11,13 +11,13 @@
       
       </thead>
       <tbody>
-      	    {{#each spazaData}}
+      	    {{#each purchase_table}}
 			<tr>
-			    <td>{{Day}}</td>
-			    <td>{{Date}}</td>
-			    <td>{{"stock item"}}</td>
-			    <td>{{ "No sold"}}</td>
-			    <td>{{"Sales Price"}}</td>
+			    <td>{{day}}</td>
+			    <td>{{date}}</td>
+			    <td>{{stock_item}}</td>
+			    <td>{{no_sold}}</td>
+			    <td>{{sales_price}}</td>
 			</tr>
 		    {{/each}}
       </tbody>

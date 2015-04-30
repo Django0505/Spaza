@@ -107,7 +107,7 @@ app.get('/totalSales', function(req, res) {
     res.render('totalSales',{totalSales:totalSales});
 });
 app.get('/products',products.show);
-app.post('/product',products.add);
+app.post('/product',products.addProd);
 app.get('/regularSales', function(req, res) {
  
     res.render('regularSales',{regularSales:name});
@@ -118,12 +118,30 @@ app.get('/categories', function(req, res) {
 
     res.render('categories',{categories:categories});
 });
-app.get('/spazaData', function(req, res) {
-    
-    //var spazaData = yourModuleThatProcessTheData.getCategories();
+//=======================================
+//actions for Categories
 
-    res.render('spazaData',{spazaData:tableJs});
-});
+app.get('/CatList',products.showCatList);
+app.post('/cat',products.addCat);
+app.post('/cat',products.deleteCat);
+
+//========================================
+//actions for Suppliers
+
+app.get('/supplier',products.suppliers);
+app.post('/supply',products.addSupplier);
+
+//=========================================
+//actions for purchases
+app.get('/purchasesList',products.purchases);
+app.post('/purchase',products.addPurchase);
+
+
+//===========================================
+//actions for Sales
+app.get('/spazaData',products.sales);
+
+
 
 app.get('/mostSellingCategory', function(req, res) {
     

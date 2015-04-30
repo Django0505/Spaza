@@ -3,10 +3,20 @@
 	
 	<h1>Add a product</h1>
 	<form action="/product" method="POST">
-		Description: <input type="text" name="description">	
+		Product: <input type="text" name="product_name">
+		<select name="category_id">
+    {{#categories}}
+    <option value="{{category_id}}">{{category_name}}</option>
+    {{/categories}}
+    </select>	
 		<input type="submit">
 	</form>
 </div>
+<h1>Delete a product</h1>
+<form action="/products/update/{{id}}" method="POST">
+	Product: <input type="text" name="product" value="{{Product_name}}">	
+	<input type="submit">
+</form>
 
 
 
@@ -18,7 +28,7 @@
         
           <th>product_id</th>
           <th>product_name</th>
-          <th>category_id</th>
+          <th>category_name</th>
           
       
       </thead>
@@ -27,7 +37,7 @@
 			<tr>
 			    <td>{{product_id}}</td>
 			    <td>{{product_name}}</td>
-			    <td>{{category_id}}</td>
+			    <td>{{category_name}}</td>
 			</tr>
 		    {{/each}}
       </tbody>

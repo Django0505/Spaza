@@ -1,0 +1,41 @@
+<div id="add-purchase">
+	
+	<h1>Add a purchase record</h1>
+	<form action="/purchase" method="POST">
+		Shop: <input type="text" name="shop">
+		Date: <input type="text" name="date">
+		Product Name: <input type="text" name="item">
+		Number Bought: <input type="text" name="quantity">
+		Purchase Price: <input type="text" name="cost">
+		<input type="submit">
+	</form>
+</div>
+
+
+
+
+<h2>Spaza Purchases</h2>
+<table class="table">
+	   <thead>
+        
+          <th>Shop</th>
+          <th>Date</th>
+          <th>Purchase Item</th>
+          <th>Quantity Bought</th>
+          <th>Purchase Price</th>
+          
+      
+      </thead>
+      <tbody>
+      	    {{#each orders_table}}
+			<tr>
+			    <td>{{shop}}</td>
+			    <td>{{date}}</td>
+			    <td>{{item}}</td>
+			    <td>{{quantity}}</td>
+			    <td>{{cost}}</td>
+			</tr>
+		    {{/each}}
+      </tbody>
+
+</table>

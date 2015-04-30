@@ -1,0 +1,36 @@
+<div id="add-cat">
+	
+	<h1>Add a product</h1>
+	<form action="/cat" method="POST">
+		Category Name: <input type="text" name="category_name">	
+		<input type="submit">
+	</form>
+</div>
+<div id="delete-cat">
+
+<form action="/cat" method="POST">
+	Category: <input type="text" name="product" value="{{category_id}}">	
+	<input type="submit">
+</form>
+</div>
+
+<h2>Categories</h2>
+<table class="table">
+
+	   <thead>
+        
+          <th>Category ID</th>
+          <th>Category Name</th>
+          
+      
+      </thead>
+      <tbody>
+      	     {{#categories}}
+			<tr>
+			    <td>{{category_id}}</td>
+			    <td>{{category_name}}</td>
+			</tr>
+		    {{/categories}}
+      </tbody>
+
+</table>

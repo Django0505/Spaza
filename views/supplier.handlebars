@@ -1,0 +1,32 @@
+<div id="add-supplier">
+	
+	<h1>Add a supplier</h1>
+	<form action="/supply" method="POST">
+		Supplier Name: <input type="text" name="supplier_name">	
+		<input type="submit">
+	</form>
+</div>
+
+
+<h2>Supplier list</h2>
+
+
+<table class="table">
+	   <thead>
+        
+          <th>supplier_id</th>
+          <th>supplier_name</th>
+          
+          
+      
+      </thead>
+      <tbody>
+      	     {{#each suppliers}}
+			<tr>
+			    <td>{{supplier_id}}</td>
+			    <td>{{supplier_name}}</td>
+			</tr>
+		    {{/each}}
+      </tbody>
+
+</table>
