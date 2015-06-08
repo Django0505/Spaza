@@ -1,5 +1,5 @@
 
-<div id="add-products">
+<!-- <div id="add-products">
 	
 	<h1>Add a product</h1>
 	<form action="/product" method="POST">
@@ -16,19 +16,19 @@
 <form action="/products/update/{{id}}" method="POST">
 	Product: <input type="text" name="product" value="{{Product_name}}">	
 	<input type="submit">
-</form>
+</form> -->
 
 
 
 <h2>Product list</h2>
-
+<div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalAdd">Add New Product</button></div>
 
 <table class="table">
 	   <thead>
         
-          <th>product_id</th>
-          <th>product_name</th>
-          <th>category_name</th>
+          <th>Product Id</th>
+          <th>Product Name</th>
+          <th>Category Name</th>
           
       
       </thead>
@@ -38,10 +38,119 @@
 			    <td>{{product_id}}</td>
 			    <td>{{product_name}}</td>
 			    <td>{{category_name}}</td>
+			    <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{this.product_id}}">Update</button></td>
+			    <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalDelete_{{this.product_id}}">Delete</button></td>
 			</tr>
 		    {{/each}}
       </tbody>
 
 </table>
 
-	
+
+
+
+
+
+
+
+<!-- Button trigger modal -->
+
+<!-- Modal Update -->        
+{{#products}}
+<div class="modal fade" id="myModal_{{this.product_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Update {{this.product_name}}</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/product/updateProd/{{this.product_id}}" method="POST">
+			<p>Product  Name: </p><input type="text" name="product_name" value="{{this.product_name}}" placeholder="{{this.product_name}}">
+			<p>Category Name: </p><input type="text" name="category_id" value="{{this.category_name}}" placeholder="{{this.category_name}}">	
+	     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      	</div>
+	   </form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+{{/products}}
+
+
+
+<!-- Modal Add Product -->    
+
+<div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add New Product</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/product" method="POST">
+			<p>Product  Name: </p><input type="text"  name="product_name" placeholder="product name">
+			<p>Category Name: </p><select name="category_id">
+    {{#categories}}
+    <option value="{{category_id}}">{{category_name}}</option>
+    {{/categories}}
+    </select>
+	     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Add Product</button>
+      </div>
+		</form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal Delete-->        
+{{#products}}
+<div class="modal fade" id="myModalDelete_{{this.product_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Update {{this.product_name}}</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/products/update/{{this.product_id}}" method="POST">
+			<p>Product  Name: </p><input type="text"  name="product" placeholder="{{this.product_name}}">
+			<p>Category Name: </p><select name="category_id">
+    {{#categories}}
+    <option value="{{category_id}}">{{category_name}}</option>
+    {{/categories}}
+    </select>
+	     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary" type="submit">Submit</button>
+      </div>
+		</form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+{{/products}}
