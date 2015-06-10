@@ -154,6 +154,10 @@ td{
 	margin: 0 auto;
 	text-align: center;
 }
-
-
+#redMe{
+	color:#ce2c38;
+}
+.prodName{
+	color: black;
+}
 

@@ -1,6 +1,6 @@
-<div id="add-cat">
+{{!-- <div id="add-cat">
 	
-	<h1>Add a product</h1>
+	<h1>Add a category</h1>
 	<form action="/cat" method="POST">
 		Category Name: <input type="text" name="category_name">	
 		<input type="submit">
@@ -9,12 +9,118 @@
 <div id="delete-cat">
 
 <form action="/cat" method="POST">
-	Category: <input type="text" name="product" value="{{category_id}}">	
+	Category: <input type="text" name="category" value="{{category_id}}">	
 	<input type="submit">
 </form>
 </div>
+ --}}
+
+
+<!-- Button trigger modal -->
+
+<!-- Modal Update -->        
+{{#categories}}
+
+<div class="modal fade" id="myModal_{{this.category_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Update {{this.category_name}}</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/cat/updateCat/{{this.category_id}}" method="POST">
+			<p>Category  Name: </p><input type="text" name="category_name" value="{{this.category_name}}" placeholder="{{this.category_name}}">
+      {{!-- <p>Category Name: </p><input type="text" name="category_name" value="{{this.category_name}}" placeholder="{{this.category_name}}"> --}}  
+      
+       
+	     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      	</div>
+	   </form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+
+{{/categories}}
+
+
+
+<!-- Modal Add Category -->    
+
+<div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add New Category</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/cat" method="POST">
+			<p>Category  Name: </p><input type="text"  name="category_name" placeholder="category name">
+	{{!-- 		<p>Category Name: </p><select name="category_id">
+    {{#categories}}
+    <option value="{{category_id}}">{{category_name}}</option>
+    {{/categories}}
+    </select> --}}
+	     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Add Category</button>
+      </div>
+		</form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal Delete-->        
+{{#categories}}
+<div class="modal fade" id="myModalDelete_{{this.category_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete {{this.category_name}}</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/cat/deleteCat/{{this.category_id}}" method="POST">
+          <h4 id="redMe">Are you sure you want to delete <span class="prodName">{{this.category_name}}</span>?</h4>
+			{{!-- <p>Category  Name: </p><input type="text"  name="category_name" value="{{category_name}}"> --}}
+	     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Delete</button>
+      </div>
+		</form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+{{/categories}}
+
 
 <h2>Categories</h2>
+<div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalAdd">Add New Category</button></div>
 <table class="table">
 
 	   <thead>
@@ -29,6 +135,8 @@
 			<tr>
 			    <td>{{category_id}}</td>
 			    <td>{{category_name}}</td>
+			    <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{this.category_id}}">Update</button></td>
+			    <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalDelete_{{this.category_id}}">Delete</button></td>
 			</tr>
 		    {{/categories}}
       </tbody>

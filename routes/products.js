@@ -9,15 +9,17 @@ exports.show = function (req, res, next) {
 	 
 	req.getConnection(function(err, connection){
 		if (err) 
-			return next(err);
-		connection.query('SELECT * from products, categories where products.category_id=categories.category_id', [], function(err, prod,fields) {
-        	if (err) return next(err);
+			return next(err);		
+    connection.query('SELECT * from products, categories where products.category_id=categories.category_id', [], function(err, prod,fields) {
+        	if (err)
+            return next(err);
         	connection.query('SELECT * from categories', [], function(err, cat,fields) {
-          if (err) return next(err);
-            res.render( 'products', {
+          if (err) 
+            return next(err);
+          res.render( 'products', {
               products : prod,
               categories:cat
-            });
+          });
       
       });
     	
@@ -239,7 +241,7 @@ exports.addPurchase = function (req, res, next) {
                 quantity : input.quantity,
                 cost : input.cost
           };
-    connection.query('insert into purchase_table set ?', data, function(err, results) {
+    connection.query('insert into orders_table set ?,total_cost = quantity * cost', data, function(err, results) {
             if (err)
                   return  console.log("Error inserting : %s ",err );
          
@@ -254,7 +256,7 @@ exports.addPurchase = function (req, res, next) {
  exports.deleteProd = function(req, res, next){
  	var id = req.params.id;
  	req.getConnection(function(err, connection){
- 		connection.query('DELETE FROM products WHERE id = ?', [id], function(err,rows){
+ 		connection.query('DELETE FROM products WHERE product_id = ?', [id], function(err,rows){
  			if(err){
      				console.log("Error Selecting : %s ",err );
  			}
@@ -267,11 +269,11 @@ exports.addPurchase = function (req, res, next) {
  exports.deleteCat = function(req, res, next){
   var id = req.params.id;
   req.getConnection(function(err, connection){
-    connection.query('DELETE FROM products WHERE id = ?', [id], function(err,rows){
+    connection.query('DELETE FROM categories WHERE category_id = ?', [id], function(err,rows){
       if(err){
             console.log("Error Selecting : %s ",err );
       }
-      res.redirect('/products');
+      res.redirect('/CatList');
     });
   });
  };
@@ -310,11 +312,11 @@ exports.deletePurchase = function(req, res, next){
   var id = req.params.id;
   req.getConnection(function(err, connection){
 
-    connection.query('DELETE FROM categories WHERE id = ?', [id], function(err,rows){
+    connection.query('DELETE FROM orders_table WHERE id = ?', [id], function(err,rows){
       if(err){
           console.log("Error Selecting : %s ",err );
       }
-      res.redirect('/CatList');
+      res.redirect('/purchasesList');
     });
      
   });
@@ -330,13 +332,14 @@ exports.updateProd = function(req, res, next){
      var id = req.params.id;
      var data = {
                 product_name : req.body.product_name,
-                category_id : req.body.category_id
+                category_name : req.body.category_name
           };
       req.getConnection(function(err, connection){
-       connection.query('UPDATE products SET ? WHERE product_id = ?', [data, id], function(err, rows){
+       connection.query('UPDATE products SET products.category_id = (SELECT category_id FROM categories WHERE category_name = ?) WHERE product_name = ?', [data.category_name, data.product_name], function(err, rows){
          if (err){
                    console.log("Error Updating : %s ",err );
          }
+
              res.redirect('/products');
         });
         
@@ -349,11 +352,11 @@ exports.updateCat = function(req, res, next){
  var data = JSON.parse(JSON.stringify(req.body));
      var id = req.params.id;
       req.getConnection(function(err, connection){
-       connection.query('UPDATE products SET ? WHERE id = ?', [data, id], function(err, rows){
+       connection.query('UPDATE categories SET ? WHERE category_id = ?', [data, id], function(err, rows){
          if (err){
                    console.log("Error Updating : %s ",err );
          }
-             res.redirect('/products');
+             res.redirect('/CatList');
         });
         
      });

@@ -109,7 +109,7 @@ app.get('/totalSales', function(req, res) {
 app.get('/products',products.show);
 app.post('/product',products.addProd);
 app.post('/product/updateProd/:id',products.updateProd);
-app.post('/product',products.deleteProd);
+app.post('/product/deleteProd/:id',products.deleteProd);
 app.get('/regularSales', function(req, res) {
  
     res.render('regularSales',{regularSales:name});
@@ -125,7 +125,8 @@ app.get('/categories', function(req, res) {
 
 app.get('/CatList',products.showCatList);
 app.post('/cat',products.addCat);
-app.post('/cat',products.deleteCat);
+app.post('/cat/updateCat/:id',products.updateCat);
+app.post('/cat/deleteCat/:id',products.deleteCat);
 
 //========================================
 //actions for Suppliers
@@ -136,10 +137,11 @@ app.post('/supply',products.addSupplier);
 //=========================================
 //actions for purchases
 app.get('/purchasesList',products.purchases);
-app.post('/purchase',products.addPurchase);
+
 app.get('/purchasesList',products.suppliers);
 app.get('/products',products.show);
-
+app.post('/purchase',products.addPurchase);
+app.post('/purchase',products.deletePurchase);
 
 //===========================================
 //actions for Sales

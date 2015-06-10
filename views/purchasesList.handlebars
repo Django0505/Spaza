@@ -1,4 +1,4 @@
-<div id="add-purchase">
+{{!-- <div id="add-purchase">
 	
 	<h1>Add a purchase record</h1>
 	<form action="/purchase" method="POST">
@@ -61,7 +61,7 @@
   </fieldset>
 </form>
 
-</div>
+</div> --}}
 
 
 
@@ -86,6 +86,8 @@
 
 
 <h2>Spaza Purchases</h2>
+<div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Nkosi">Add New Product</button></div>
+
 <table class="table">
 	   <thead>
         
@@ -94,7 +96,7 @@
           <th>Purchase Item</th>
           <th>Quantity Bought</th>
           <th>Purchase Price</th>
-          
+          <th>Total</th>
       
       </thead>
       <tbody>
@@ -105,6 +107,9 @@
 			    <td>{{item}}</td>
 			    <td>{{quantity}}</td>
 			    <td>{{cost}}</td>
+          <td>{{total_cost}}</td>
+         {{!--  <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{this.product_id}}">Update</button></td> --}}
+          <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalDelete_{{this.product_id}}">Delete</button></td>
 			</tr>
 		    {{/each}}
       </tbody>
@@ -117,3 +122,116 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+{{!-- <!-- Button trigger modal -->
+
+<!-- Modal Update -->        
+{{#date}}
+
+<div class="modal fade" id="myModal_{{this.date}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Update {{this.product_name}}</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/product/updateProd/{{this.date}}" method="POST">
+      <p>Product  Name: </p><input type="text" name="product_name" value="{{this.product_name}}" placeholder="{{this.product_name}}">
+      <p>Category Name: </p><input type="text" name="category_name" value="{{this.category_name}}" placeholder="{{this.category_name}}">  
+      <p>Category Name: </p><input type="text" name="category_name" value="{{this.category_name}}" placeholder="{{this.category_name}}"> 
+      <p>Category Name: </p><input type="text" name="category_name" value="{{this.category_name}}" placeholder="{{this.category_name}}"> 
+      
+       
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+     </form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+
+{{/date}} --}}
+
+
+
+<!-- Modal Add Product -->    
+
+<div class="modal fade" id="Nkosi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add New Product</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/purchase" method="POST">
+      <p>Shop: </p><input type="text"  name="shop" placeholder="shop">
+      
+    <p>Date: </p><input type="text" name="date" value="{{this.date}}" placeholder="yyyy/dd/mm">  
+    <p>Purchased Item: </p><input type="text" name="item" value="{{this.item}}" placeholder="Product Name">  
+    <p>Quantity Bought: </p><input type="text" name="quantity" value="{{this.quantity}}" placeholder="quantity"> 
+    <p>Purchase Price: </p><input type="text" name="cost" value="{{this.cost}}" placeholder="cost"> 
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Add Product</button>
+      </div>
+    </form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal Delete-->        
+{{#date}}
+<div class="modal fade" id="myModalDelete_{{this.date}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete {{this.product_name}}</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/product/deleteProd/{{this.date}}" method="POST">
+          <h4 id="redMe">Are you sure you want to delete <span class="prodName">{{this.product_name}}</span>?</h4>
+      {{!-- <p>Product  Name: </p><input type="text"  name="product_name" value="{{product_name}}"> --}}
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Delete</button>
+      </div>
+    </form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+{{/date}}
