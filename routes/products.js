@@ -215,9 +215,12 @@ exports.addSale = function (req, res, next) {
     
     var input = JSON.parse(JSON.stringify(req.body));
     var data = {
-                category_name : input.category_name
+                day : input.day,
+                on_date : input.on_date,
+                quantity : input.quantity,
+                sale_price : input.sale_price
           };
-    connection.query('insert into purchase_table set ?', data, function(err, results) {
+    connection.query('insert into sales set sales.product_id = (SELECT product_id FROM products WHERE product_name = ?),?', [input.product_name,    data], function(err, results) {
             if (err)
                   return  console.log("Error inserting : %s ",err );
          
@@ -282,11 +285,11 @@ exports.deleteSupplier = function(req, res, next){
   var id = req.params.id;
   req.getConnection(function(err, connection){
 
-    connection.query('DELETE FROM categories WHERE id = ?', [id], function(err,rows){
+    connection.query('DELETE FROM suppliers WHERE supplier_id = ?', [id], function(err,rows){
       if(err){
           console.log("Error Selecting : %s ",err );
       }
-      res.redirect('/CatList');
+      res.redirect('/supplier');
     });
      
   });
@@ -312,7 +315,7 @@ exports.deletePurchase = function(req, res, next){
   var id = req.params.id;
   req.getConnection(function(err, connection){
 
-    connection.query('DELETE FROM orders_table WHERE id = ?', [id], function(err,rows){
+    connection.query('DELETE FROM orders_table WHERE purchase_id = ?', [id], function(err,rows){
       if(err){
           console.log("Error Selecting : %s ",err );
       }

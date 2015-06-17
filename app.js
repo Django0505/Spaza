@@ -133,7 +133,7 @@ app.post('/cat/deleteCat/:id',products.deleteCat);
 
 app.get('/supplier',products.suppliers);
 app.post('/supply',products.addSupplier);
-
+app.post('/supply/deleteSupplier/:id',products.deleteSupplier);
 //=========================================
 //actions for purchases
 app.get('/purchasesList',products.purchases);
@@ -141,12 +141,16 @@ app.get('/purchasesList',products.purchases);
 app.get('/purchasesList',products.suppliers);
 app.get('/products',products.show);
 app.post('/purchase',products.addPurchase);
-app.post('/purchase',products.deletePurchase);
+app.post('/purchase/deletePurchase/:id',products.deletePurchase);
 
 //===========================================
 //actions for Sales
 app.get('/spazaData',products.sales);
 
+app.get('/spazaData',products.suppliers);
+app.get('/products',products.show);
+app.post('/sale',products.addSale);
+app.post('/sale/deleteSale/:id',products.deleteSale);
 
 
 app.get('/mostSellingCategory', function(req, res) {

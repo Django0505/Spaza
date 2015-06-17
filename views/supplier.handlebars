@@ -1,4 +1,4 @@
-<div id="add-supplier">
+{{!-- <div id="add-supplier">
 	
 	<h1>Add a supplier</h1>
 	<form action="/supply" method="POST">
@@ -6,16 +6,16 @@
 		<input type="submit">
 	</form>
 </div>
-
+ --}}
 
 <h2>Supplier list</h2>
-
+<div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Nkosi">Add New Supplier</button></div>
 
 <table class="table">
 	   <thead>
         
-          <th>supplier_id</th>
-          <th>supplier_name</th>
+          <th>Supplier Id</th>
+          <th>Supplier Name</th>
           
           
       
@@ -25,8 +25,65 @@
 			<tr>
 			    <td>{{supplier_id}}</td>
 			    <td>{{supplier_name}}</td>
+			    <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalDelete_{{this.supplier_id}}">Delete</button></td>
 			</tr>
 		    {{/each}}
       </tbody>
 
 </table>
+
+
+
+
+<!-- Modal Delete-->        
+{{#suppliers}}
+<div class="modal fade" id="myModalDelete_{{supplier_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete {{supplier_name}}</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/supply/deleteSupplier/{{this.supplier_id}}" method="POST">
+          <h4 id="redMe">Are you sure you want to delete <span class="prodName">{{supplier_name}}</span>?</h4>
+      {{!-- <p>Product  Name: </p><input type="text"  name="product_name" value="{{product_name}}"> --}}
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Delete</button>
+      </div>
+    </form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+{{/suppliers}}
+
+
+
+<!-- Modal Add Product -->    
+
+<div class="modal fade" id="Nkosi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add New Supplier</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/supply" method="POST">
+      <p>Supplier: </p><input type="text"  name="supplier_name" placeholder="supplier"> 
+    
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Add Supplier</button>
+      </div>
+    </form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>

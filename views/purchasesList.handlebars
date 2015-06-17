@@ -86,7 +86,7 @@
 
 
 <h2>Spaza Purchases</h2>
-<div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Nkosi">Add New Product</button></div>
+<div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Nkosi">Add Purchase</button></div>
 
 <table class="table">
 	   <thead>
@@ -109,7 +109,7 @@
 			    <td>{{cost}}</td>
           <td>{{total_cost}}</td>
          {{!--  <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{this.product_id}}">Update</button></td> --}}
-          <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalDelete_{{this.product_id}}">Delete</button></td>
+          <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalDelete_{{this.purchase_id}}">Delete</button></td>
 			</tr>
 		    {{/each}}
       </tbody>
@@ -175,7 +175,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Add New Product</h4>
+        <h4 class="modal-title" id="myModalLabel">Add Purchase</h4>
       </div>
       <div class="modal-body">
         <form action="/purchase" method="POST">
@@ -187,7 +187,7 @@
     <p>Purchase Price: </p><input type="text" name="cost" value="{{this.cost}}" placeholder="cost"> 
        <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button class="btn btn-primary" type="submit">Add Product</button>
+        <button class="btn btn-primary" type="submit">Add Purchaset</button>
       </div>
     </form>
       </div>
@@ -211,17 +211,17 @@
 
 
 <!-- Modal Delete-->        
-{{#date}}
-<div class="modal fade" id="myModalDelete_{{this.date}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+{{#orders_table}}
+<div class="modal fade" id="myModalDelete_{{this.purchase_id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Delete {{this.product_name}}</h4>
+        <h4 class="modal-title" id="myModalLabel">Delete {{this.item}}</h4>
       </div>
       <div class="modal-body">
-        <form action="/product/deleteProd/{{this.date}}" method="POST">
-          <h4 id="redMe">Are you sure you want to delete <span class="prodName">{{this.product_name}}</span>?</h4>
+        <form action="/purchase/deletePurchase/{{this.purchase_id}}" method="POST">
+          <h4 id="redMe">Are you sure you want to delete <span class="prodName">{{this.item}}</span>?</h4>
       {{!-- <p>Product  Name: </p><input type="text"  name="product_name" value="{{product_name}}"> --}}
        <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -234,4 +234,4 @@
     </div>
   </div>
 </div>
-{{/date}}
+{{/orders_table}}

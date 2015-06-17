@@ -1,4 +1,6 @@
 <h2>Spaza Sales</h2>
+<div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#Nkosi">Add Sale</button></div>
+
 <table class="table">
 	   <thead>
         
@@ -6,7 +8,7 @@
           <th>Date</th>
           <th>Stock Item</th>
           <th>Number Sold</th>
-          <th>SalesPrice</th>
+          <th>Sales Price</th>
           
       
       </thead>
@@ -31,4 +33,32 @@
 
 
 
+<!-- Modal Add Product -->    
+
+<div class="modal fade" id="Nkosi" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Sale</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/sale" method="POST">
+      <p>Day: </p><input type="text"  name="shop" value="{{this.day }}" placeholder="day of week">
+      
+    <p>Date: </p><input type="text" name="on_date" value="{{this.on_date }}" placeholder="yyyy/dd/mm">  
+    <p>Stock Item: </p><input type="text" name="product_name" value="{{this.product_name}}" placeholder="Product Name">  
+    <p>Number Sold: </p><input type="text" name="quantity" value="{{this.quantity}}" placeholder="quantity"> 
+    <p>Sales Price: </p><input type="text" name="sale_price" value="{{this.sale_price}}" placeholder="price"> 
+       <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Add Sale</button>
+      </div>
+    </form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
 
