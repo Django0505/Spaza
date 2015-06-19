@@ -101,7 +101,10 @@ app.use(express.static('public'));
  
 //     res.render('login', {layout: false});
 // };
-
+app.use(session({secret: 'what ha',
+                 saveUnitialized: true,
+                 resave: true
+}));
 
 //======
 var user = {
@@ -127,13 +130,13 @@ app.get('/users', checkUser, function(req, res){
 
 
 
-app.get('/login', function(req, res) {
+app.get('/', function(req, res) {
  
     res.render('login', {layout: false});
 });
 
 
-app.get('/', function(req, res) {
+app.get('/home', function(req, res) {
  
     res.render('home',{totalSales:totalSales});
 });
