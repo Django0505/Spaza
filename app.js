@@ -27,6 +27,8 @@
 var express = require('express');
 var exphbs = require('express-handlebars');
 var app = express();
+//==express session
+var session = require('express-session');
 //
 var passport = require('./auth');
 
@@ -102,6 +104,11 @@ app.use(express.static('public'));
 
 
 //======
+var user = {
+  userName: "Mawas",
+  password: "nkunzi"
+}
+
 var checkUser = function(req, res, next){
   if (req.session.user){
     return next();
@@ -202,7 +209,7 @@ var server = app.listen(port, function () {
   var host = server.address().address
   var port = server.address().port
 
-console.log('doing my thing at http://3000');
+console.log('doing my thing at (*tip CMD click-->) http://localhost:3000/');
 });
 
 
