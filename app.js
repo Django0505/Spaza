@@ -5,6 +5,8 @@
 //     defaultLayout: 'main'
 // }));
 
+//some useless comments
+
 // app.set('view engine', 'handlebars');
 // app.use(express.static('views'));
 
