@@ -100,6 +100,32 @@ app.use(express.static('public'));
 //     res.render('login', {layout: false});
 // };
 
+
+//======
+var checkUser = function(req, res, next){
+  if (req.session.user){
+    return next();
+  }
+  // the user is not logged in redirect him to the login page
+  res.redirect('login');
+};
+
+app.get('/users', checkUser, function(req, res){
+  var userData = userService.getUserData();
+  res.render('users', userData)
+});
+
+//=======
+
+
+
+
+app.get('/login', function(req, res) {
+ 
+    res.render('login', {layout: false});
+});
+
+
 app.get('/', function(req, res) {
  
     res.render('home',{totalSales:totalSales});

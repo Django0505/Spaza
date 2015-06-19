@@ -160,4 +160,10 @@ td{
 .prodName{
 	color: black;
 }
+.panel-info>.panel-heading {
+  color: #ffffff;
+  background-color: #BDBEBE;
+
+}
+
 
