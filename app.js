@@ -18,33 +18,33 @@
 // app.listen(3000);
 // console.log('doing my thing at http://3000');
 
-
+// cmd shift r hard refresh
 
 
 
 //var appSpaza = angular.module("Spaza", []);
 
-var express = require('express');
-var exphbs = require('express-handlebars');
-var app = express();
+var express             = require('express');
+var exphbs              = require('express-handlebars');
+var app                 = express();
 //==express session
-var session = require('express-session');
+var session             = require('express-session');
 //
-var passport = require('./auth');
+//var passport            = require('./auth');
 
-var totalSales = require('./public/totalSold');
-var categories = require('./public/categories.json');
-var tableJs = require('./public/spazaData.json');
-var name = require('./public/regularSales.json');
+var totalSales          = require('./public/totalSold');
+var categories          = require('./public/categories.json');
+var tableJs             = require('./public/spazaData.json');
+var name                = require('./public/regularSales.json');
 var mostSellingCategory = require('./public/mostSellingCategory.json');
 //var mostRegularSales = ;
 
-var mysql = require('mysql'),
-    bodyParser = require('body-parser'),
-    products = require('./routes/products'),
-    orders = require('./routes/orders');
+var mysql               = require('mysql'),
+    bodyParser          = require('body-parser'),
+    products            = require('./routes/products'),
+    orders              = require('./routes/orders');
 
-var myConnection = require('express-myconnection');
+var myConnection        = require('express-myconnection');
 
 var dbOptions = {
       host: 'localhost',
@@ -101,39 +101,63 @@ app.use(express.static('public'));
  
 //     res.render('login', {layout: false});
 // };
-app.use(session({secret: 'what ha',
-                 saveUnitialized: true,
+app.use(session({secret: 'whatlskhflha',
+                 saveUninitialized: true,
                  resave: true
 }));
 
 //======
-var user = {
-  userName: "Mawas",
-  password: "nkunzi"
-}
+// var userName = req.body.userName;
+// var password = req.body.password;
 
-var checkUser = function(req, res, next){
-  if (req.session.user){
-    return next();
-  }
-  // the user is not logged in redirect him to the login page
-  res.redirect('login');
-};
+// var user = {
+//   userName: "Mawas",
+//   password: "nkunzi"
+// }
 
-app.get('/users', checkUser, function(req, res){
-  var userData = userService.getUserData();
-  res.render('users', userData)
-});
+// var checkUser = function(req, res, next){
+//   if (req.session.user){
+//     return next();
+//   }
+//   // the user is not logged in redirect him to the login page
+//   res.redirect('login');
+// };
+
+// app.get('/users', checkUser, function(req, res){
+//   var userData = userService.getUserData();
+//   res.render('users', userData)
+// });
+
+
 
 //=======
 
 
-
-
+app.get('/login');
 app.get('/', function(req, res) {
  
     res.render('login', {layout: false});
 });
+app.post('/login/:user', function (req, res, next) {
+
+  var user ={
+    userName: "Mickey",
+    password: "asdf"
+  }
+
+  // var user.userName = req.body.userName;
+  // var user.password = req.body.password;
+
+  if(req.body.userName === user.userName && req.body.password === user.password){
+    //req.session.user = req.body.user;
+    return res.render('/home')
+  }
+
+  res.send("invalid user!")
+  //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
+});
+
+
 
 
 app.get('/home', function(req, res) {
@@ -212,7 +236,7 @@ var server = app.listen(port, function () {
   var host = server.address().address
   var port = server.address().port
 
-console.log('doing my thing at (*tip CMD click-->) http://localhost:3000/');
+console.log('doing my thing at http://localhost:3000/');
 });
 
 

@@ -1,400 +1,396 @@
-
 /***
  * A very basic CRUD example using MySQL
- */	
+ */
 
 //todo - fix the error handling
 //
-exports.show = function (req, res, next) {
-	 
-	req.getConnection(function(err, connection){
-		if (err) 
-			return next(err);		
-    connection.query('SELECT * from products, categories where products.category_id=categories.category_id', [], function(err, prod,fields) {
-        	if (err)
+exports.show = function(req, res, next) {
+
+    req.getConnection(function(err, connection) {
+        if (err)
             return next(err);
-        	connection.query('SELECT * from categories', [], function(err, cat,fields) {
-          if (err) 
-            return next(err);
-          res.render( 'products', {
-              products : prod,
-              categories:cat
-          });
-      
-      });
-    	
-      });
-	});
+        connection.query('SELECT * from products, categories where products.category_id=categories.category_id', [], function(err, prod, fields) {
+            if (err)
+                return next(err);
+            connection.query('SELECT * from categories', [], function(err, cat, fields) {
+                if (err)
+                    return next(err);
+                res.render('products', {
+                    products: prod,
+                    categories: cat
+                });
+
+            });
+
+        });
+    });
 };
 
-exports.showCatList = function (req, res, next) {
-  
-  req.getConnection(function(err, connection){
-    if (err) 
-      return next(err);
-    connection.query('SELECT * from categories', [], function(err, results,fields) {
-          if (err) return next(err);
-          
-        res.render( 'CatList', {
-          categories : results
+exports.showCatList = function(req, res, next) {
+
+    req.getConnection(function(err, connection) {
+        if (err)
+            return next(err);
+        connection.query('SELECT * from categories', [], function(err, results, fields) {
+            if (err) return next(err);
+
+            res.render('CatList', {
+                categories: results
+            });
         });
-      });
-  });
+    });
 };
 
 
-exports.suppliers = function(req, res, next){
-	
-	req.getConnection(function(err, connection){
-		if (err) 
-			return next(err);
-		connection.query('SELECT * FROM suppliers', [], function(err, supp) {
-        	if (err) return next(err);
+exports.suppliers = function(req, res, next) {
 
-    		res.render( 'supplier', {
-    			suppliers : supp
-    		});
-      });
-	});
+    req.getConnection(function(err, connection) {
+        if (err)
+            return next(err);
+        connection.query('SELECT * FROM suppliers', [], function(err, supp) {
+            if (err) return next(err);
 
-}
-exports.purchases = function(req, res, next){
-  
-  req.getConnection(function(err, connection){
-    if (err) 
-      return next(err);
-    connection.query('SELECT * FROM orders_table', [], function(err,results) {
-          if (err) return next(err);
-
-        res.render( 'purchasesList', {
-          orders_table : results
+            res.render('supplier', {
+                suppliers: supp
+            });
         });
-      });
-  });
+    });
 
 }
+exports.purchases = function(req, res, next) {
 
-exports.sales = function(req, res, next){
-  
-  req.getConnection(function(err, connection){
-    if (err) 
-      return next(err);
-    connection.query('SELECT * FROM purchase_table', [], function(err,results) {
-          if (err) return next(err);
+    req.getConnection(function(err, connection) {
+        if (err)
+            return next(err);
+        connection.query('SELECT * FROM orders_table', [], function(err, results) {
+            if (err) return next(err);
 
-        res.render( 'spazaData', {
-          purchase_table : results
+            res.render('purchasesList', {
+                orders_table: results
+            });
         });
-      });
-  });
+    });
 
 }
 
-exports.productsAndCategories = function(req, res, next){
-	
-	req.getConnection(function(err, connection){
-		if (err) 
-			return next(err);
-		connection.query('SELECT product_name,category_name FROM products join categories on products.category_id = categories.category_id order by category_name asc;',
-			 [], function(err, results) {
-        	if (err) return next(err);
+exports.sales = function(req, res, next) {
 
-    		res.render( 'productsAndCategories', {
-    			productsAndCategories : results
-    		});
-      });
-	});
+    req.getConnection(function(err, connection) {
+        if (err)
+            return next(err);
+        connection.query('SELECT * FROM purchase_table', [], function(err, results) {
+            if (err) return next(err);
 
-}
-exports.mostSold = function(req, res, next){
-	var fs = require('fs');
-	req.getConnection(function(err, connection){
-		if (err) 
-			return next(err);
-		connection.query('select stock_item, sum(no_sold) as sold_total from purchase_table group by stock_item order by sold_total desc;',
-			 [], function(err, results) {
-        	if (err) return next(err);
-fs.writeFile('fsProductsTable.json', JSON.stringify(results), function(err){
-        		if (err) throw err;
-        		console.log('saved mostSold File!');
-        	})
-    		res.render( 'mostSold', {
-    			mostSold : results
-    		});
-      });
-	});
+            res.render('spazaData', {
+                purchase_table: results
+            });
+        });
+    });
 
 }
-exports.leastSold = function(req, res, next){
-	
-	req.getConnection(function(err, connection){
-		if (err) 
-			return next(err);
-		connection.query('select stock_item, sum(no_sold) as sold_total from purchase_table group by stock_item order by sold_total asc;',
-			 [], function(err, results) {
-        	if (err) return next(err);
 
-    		res.render( 'leastSold', {
-    			leastSold : results
-    		});
-      });
-	});
+exports.productsAndCategories = function(req, res, next) {
+
+    req.getConnection(function(err, connection) {
+        if (err)
+            return next(err);
+        connection.query('SELECT product_name,category_name FROM products join categories on products.category_id = categories.category_id order by category_name asc;', [], function(err, results) {
+            if (err) return next(err);
+
+            res.render('productsAndCategories', {
+                productsAndCategories: results
+            });
+        });
+    });
+
+}
+exports.mostSold = function(req, res, next) {
+    var fs = require('fs');
+    req.getConnection(function(err, connection) {
+        if (err)
+            return next(err);
+        connection.query('select stock_item, sum(no_sold) as sold_total from purchase_table group by stock_item order by sold_total desc;', [], function(err, results) {
+            if (err) return next(err);
+            fs.writeFile('fsProductsTable.json', JSON.stringify(results), function(err) {
+                if (err) throw err;
+                console.log('saved mostSold File!');
+            })
+            res.render('mostSold', {
+                mostSold: results
+            });
+        });
+    });
+
+}
+exports.leastSold = function(req, res, next) {
+
+    req.getConnection(function(err, connection) {
+        if (err)
+            return next(err);
+        connection.query('select stock_item, sum(no_sold) as sold_total from purchase_table group by stock_item order by sold_total asc;', [], function(err, results) {
+            if (err) return next(err);
+
+            res.render('leastSold', {
+                leastSold: results
+            });
+        });
+    });
 
 }
 //=========================ADD====================
 
-               //==Adding product==
- exports.addProd = function (req, res, next) {
- 	req.getConnection(function(err, connection){
- 		if (err){ 
- 			return next(err);
- 		}
-		
- 		var input = JSON.parse(JSON.stringify(req.body));
- 		var data = {
-             		product_name : input.product_name,
-                category_id : input.category_id
-         	};
- 		connection.query('insert into products set ?', data, function(err, results) {
-         		if (err)
-               		return	console.log("Error inserting : %s ",err );
-         
-           		res.redirect('/products')
- 		});
- 	});
- 	
-}
-                 //==Adding category== 
- exports.addCat = function (req, res, next) {
-  req.getConnection(function(err, connection){
-    if (err){ 
-      return next(err);
-    }
-    
-    var input = JSON.parse(JSON.stringify(req.body));
-    var data = {
-                category_name : input.category_name
-          };
-    connection.query('insert into categories set ?', data, function(err, results) {
+//==Adding product==
+exports.addProd = function(req, res, next) {
+    req.getConnection(function(err, connection) {
+        if (err) {
+            return next(err);
+        }
+
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            product_name: input.product_name,
+            category_id: input.category_id
+        };
+        connection.query('insert into products set ?', data, function(err, results) {
             if (err)
-                  return  console.log("Error inserting : %s ",err );
-         
-              res.redirect('/CatList')
+                return console.log("Error inserting : %s ", err);
+
+            res.redirect('/products')
+        });
     });
-  });
-  
+
+}
+//==Adding category== 
+exports.addCat = function(req, res, next) {
+    req.getConnection(function(err, connection) {
+        if (err) {
+            return next(err);
+        }
+
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            category_name: input.category_name
+        };
+        connection.query('insert into categories set ?', data, function(err, results) {
+            if (err)
+                return console.log("Error inserting : %s ", err);
+
+            res.redirect('/CatList')
+        });
+    });
+
 }
 
-                   //==Adding supplier==
-exports.addSupplier = function (req, res, next) {
-  req.getConnection(function(err, connection){
-    if (err){ 
-      return next(err);
-    }
-    
-    var input = JSON.parse(JSON.stringify(req.body));
-    var data = {
-                supplier_name : input.supplier_name
-          };
-    connection.query('insert into suppliers set ?', data, function(err, results) {
+//==Adding supplier==
+exports.addSupplier = function(req, res, next) {
+    req.getConnection(function(err, connection) {
+        if (err) {
+            return next(err);
+        }
+
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            supplier_name: input.supplier_name
+        };
+        connection.query('insert into suppliers set ?', data, function(err, results) {
             if (err)
-                  return  console.log("Error inserting : %s ",err );
-         
-              res.redirect('/supplier')
+                return console.log("Error inserting : %s ", err);
+
+            res.redirect('/supplier')
+        });
     });
-  });
-  
+
 }
 
-                //==Adding a Sale==
-exports.addSale = function (req, res, next) {
-  req.getConnection(function(err, connection){
-    if (err){ 
-      return next(err);
-    }
-    
-    var input = JSON.parse(JSON.stringify(req.body));
-    var data = {
-                day : input.day,
-                on_date : input.on_date,
-                quantity : input.quantity,
-                sale_price : input.sale_price
-          };
-    connection.query('insert into sales set sales.product_id = (SELECT product_id FROM products WHERE product_name = ?),?', [input.product_name,    data], function(err, results) {
+//==Adding a Sale==
+exports.addSale = function(req, res, next) {
+    req.getConnection(function(err, connection) {
+        if (err) {
+            return next(err);
+        }
+
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            day: input.day,
+            on_date: input.on_date,
+            quantity: input.quantity,
+            sale_price: input.sale_price
+        };
+        connection.query('insert into sales set sales.product_id = (SELECT product_id FROM products WHERE product_name = ?),?', [input.product_name, data], function(err, results) {
             if (err)
-                  return  console.log("Error inserting : %s ",err );
-         
-              res.redirect('/spazaData')
+                return console.log("Error inserting : %s ", err);
+
+            res.redirect('/spazaData')
+        });
     });
-  });
-  
+
 }
-                //==Adding a purchase==
-exports.addPurchase = function (req, res, next) {
-  req.getConnection(function(err, connection){
-    if (err){ 
-      return next(err);
-    }
-    
-    var input = JSON.parse(JSON.stringify(req.body));
-    var data = {
-                shop : input.shop,
-                date : input.date,
-                item : input.item,
-                quantity : input.quantity,
-                cost : input.cost
-          };
-    connection.query('insert into orders_table set ?,total_cost = quantity * cost', data, function(err, results) {
+//==Adding a purchase==
+exports.addPurchase = function(req, res, next) {
+    req.getConnection(function(err, connection) {
+        if (err) {
+            return next(err);
+        }
+
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            shop: input.shop,
+            date: input.date,
+            item: input.item,
+            quantity: input.quantity,
+            cost: input.cost
+        };
+        connection.query('insert into orders_table set ?,total_cost = quantity * cost', data, function(err, results) {
             if (err)
-                  return  console.log("Error inserting : %s ",err );
-         
-              res.redirect('/purchasesList')
+                return console.log("Error inserting : %s ", err);
+
+            res.redirect('/purchasesList')
+        });
     });
-  });
-  
+
 }
 //=============================DELETE======================
 
-                  //==deleting a product==
- exports.deleteProd = function(req, res, next){
- 	var id = req.params.id;
- 	req.getConnection(function(err, connection){
- 		connection.query('DELETE FROM products WHERE product_id = ?', [id], function(err,rows){
- 			if(err){
-     				console.log("Error Selecting : %s ",err );
- 			}
- 			res.redirect('/products');
- 		});
- 	});
- };
-
-                   //==deleting a category==
- exports.deleteCat = function(req, res, next){
-  var id = req.params.id;
-  req.getConnection(function(err, connection){
-    connection.query('DELETE FROM categories WHERE category_id = ?', [id], function(err,rows){
-      if(err){
-            console.log("Error Selecting : %s ",err );
-      }
-      res.redirect('/CatList');
+//==deleting a product==
+exports.deleteProd = function(req, res, next) {
+    var id = req.params.id;
+    req.getConnection(function(err, connection) {
+        connection.query('DELETE FROM products WHERE product_id = ?', [id], function(err, rows) {
+            if (err) {
+                console.log("Error Selecting : %s ", err);
+            }
+            res.redirect('/products');
+        });
     });
-  });
- };
-                   //== deleting a supplier==
-exports.deleteSupplier = function(req, res, next){
-  var id = req.params.id;
-  req.getConnection(function(err, connection){
-
-    connection.query('DELETE FROM suppliers WHERE supplier_id = ?', [id], function(err,rows){
-      if(err){
-          console.log("Error Selecting : %s ",err );
-      }
-      res.redirect('/supplier');
-    });
-     
-  });
 };
 
-                  //==deleting a sale==
-exports.deleteSale = function(req, res, next){
-  var id = req.params.id;
-  req.getConnection(function(err, connection){
-
-    connection.query('DELETE FROM categories WHERE id = ?', [id], function(err,rows){
-      if(err){
-          console.log("Error Selecting : %s ",err );
-      }
-      res.redirect('/CatList');
+//==deleting a category==
+exports.deleteCat = function(req, res, next) {
+    var id = req.params.id;
+    req.getConnection(function(err, connection) {
+        connection.query('DELETE FROM categories WHERE category_id = ?', [id], function(err, rows) {
+            if (err) {
+                console.log("Error Selecting : %s ", err);
+            }
+            res.redirect('/CatList');
+        });
     });
-     
-  });
+};
+//== deleting a supplier==
+exports.deleteSupplier = function(req, res, next) {
+    var id = req.params.id;
+    req.getConnection(function(err, connection) {
+
+        connection.query('DELETE FROM suppliers WHERE supplier_id = ?', [id], function(err, rows) {
+            if (err) {
+                console.log("Error Selecting : %s ", err);
+            }
+            res.redirect('/supplier');
+        });
+
+    });
 };
 
-                //==deleting a purchase==
-exports.deletePurchase = function(req, res, next){
-  var id = req.params.id;
-  req.getConnection(function(err, connection){
+//==deleting a sale==
+exports.deleteSale = function(req, res, next) {
+    var id = req.params.id;
+    req.getConnection(function(err, connection) {
 
-    connection.query('DELETE FROM orders_table WHERE purchase_id = ?', [id], function(err,rows){
-      if(err){
-          console.log("Error Selecting : %s ",err );
-      }
-      res.redirect('/purchasesList');
+        connection.query('DELETE FROM categories WHERE id = ?', [id], function(err, rows) {
+            if (err) {
+                console.log("Error Selecting : %s ", err);
+            }
+            res.redirect('/CatList');
+        });
+
     });
-     
-  });
+};
+
+//==deleting a purchase==
+exports.deletePurchase = function(req, res, next) {
+    var id = req.params.id;
+    req.getConnection(function(err, connection) {
+
+        connection.query('DELETE FROM orders_table WHERE purchase_id = ?', [id], function(err, rows) {
+            if (err) {
+                console.log("Error Selecting : %s ", err);
+            }
+            res.redirect('/purchasesList');
+        });
+
+    });
 };
 
 //=======================UPDATES==========================================
 
-                //==updating a product==
+//==updating a product==
 
-exports.updateProd = function(req, res, next){
+exports.updateProd = function(req, res, next) {
 
- var data = JSON.parse(JSON.stringify(req.body));
-     var id = req.params.id;
-     var data = {
-                product_name : req.body.product_name,
-                category_name : req.body.category_name
-          };
-      req.getConnection(function(err, connection){
-       connection.query('UPDATE products SET products.category_id = (SELECT category_id FROM categories WHERE category_name = ?) WHERE product_name = ?', [data.category_name, data.product_name], function(err, rows){
-         if (err){
-                   console.log("Error Updating : %s ",err );
-         }
+    var data = JSON.parse(JSON.stringify(req.body));
+    var id = req.params.id;
+    var data = {
+        product_name: req.body.product_name,
+        category_name: req.body.category_name
+    };
+    req.getConnection(function(err, connection) {
+        connection.query('UPDATE products SET products.category_id = (SELECT category_id FROM categories WHERE category_name = ?) WHERE product_name = ?', [data.category_name, data.product_name], function(err, rows) {
+            if (err) {
+                console.log("Error Updating : %s ", err);
+            }
 
-             res.redirect('/products');
+            res.redirect('/products');
         });
-        
-     });
+
+    });
 };
 
-                     //==updating a category ==
-exports.updateCat = function(req, res, next){
+//==updating a category ==
+exports.updateCat = function(req, res, next) {
 
- var data = JSON.parse(JSON.stringify(req.body));
-     var id = req.params.id;
-      req.getConnection(function(err, connection){
-       connection.query('UPDATE categories SET ? WHERE category_id = ?', [data, id], function(err, rows){
-         if (err){
-                   console.log("Error Updating : %s ",err );
-         }
-             res.redirect('/CatList');
+    var data = JSON.parse(JSON.stringify(req.body));
+    var id = req.params.id;
+    req.getConnection(function(err, connection) {
+        connection.query('UPDATE categories SET ? WHERE category_id = ?', [data, id], function(err, rows) {
+            if (err) {
+                console.log("Error Updating : %s ", err);
+            }
+            res.redirect('/CatList');
         });
-        
-     });
+
+    });
 };
 
-                //== updating a sale ==
-exports.updateSale = function(req, res, next){
+//== updating a sale ==
+exports.updateSale = function(req, res, next) {
 
- var data = JSON.parse(JSON.stringify(req.body));
-     var id = req.params.id;
-      req.getConnection(function(err, connection){
-       connection.query('UPDATE products SET ? WHERE id = ?', [data, id], function(err, rows){
-         if (err){
-                   console.log("Error Updating : %s ",err );
-         }
-             res.redirect('/products');
+    var data = JSON.parse(JSON.stringify(req.body));
+    var id = req.params.id;
+    req.getConnection(function(err, connection) {
+        connection.query('UPDATE products SET ? WHERE id = ?', [data, id], function(err, rows) {
+            if (err) {
+                console.log("Error Updating : %s ", err);
+            }
+            res.redirect('/products');
         });
-        
-     });
+
+    });
 };
 
-                 //==updating a purchase==
-exports.updatePurchse = function(req, res, next){
+//==updating a purchase==
+exports.updatePurchse = function(req, res, next) {
 
- var data = JSON.parse(JSON.stringify(req.body));
-     var id = req.params.id;
-      req.getConnection(function(err, connection){
-       connection.query('UPDATE products SET ? WHERE id = ?', [data, id], function(err, rows){
-         if (err){
-                   console.log("Error Updating : %s ",err );
-         }
-             res.redirect('/products');
+    var data = JSON.parse(JSON.stringify(req.body));
+    var id = req.params.id;
+    req.getConnection(function(err, connection) {
+        connection.query('UPDATE products SET ? WHERE id = ?', [data, id], function(err, rows) {
+            if (err) {
+                console.log("Error Updating : %s ", err);
+            }
+            res.redirect('/products');
         });
-        
-     });
+
+    });
 };
 
 //
@@ -436,6 +432,6 @@ exports.updatePurchse = function(req, res, next){
 //          }
 //              res.redirect('/products');
 //        });
-        
+
 //     });
 // };
