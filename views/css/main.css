@@ -163,7 +163,13 @@ td{
 .panel-info>.panel-heading {
   color: #ffffff;
   background-color: #BDBEBE;
+  height:60px;
 
 }
+p.warning{
+	text-align: center;
+	color:red;
+}
+
 
 

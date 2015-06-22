@@ -19,7 +19,19 @@
 	<div class="main">
 		<div class="container">
 		<br>
-
+    <div class="login">
+        {{#user}}
+        <p> Logged in as {{userName}}</p>
+        {{/user}}
+         <form action="/logout" method="POST">
+          
+        <button class="btn btn-primary" type="submit">logout</button>
+        </form>
+        <br />
+        {{#if logout}}
+            {{msg}}
+        {{/if}}
+    </div><!-- /.login -->
 	<div class="row">
 		<div class="col-xs-12 ">
             <div class="panel panel-primary">

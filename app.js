@@ -102,8 +102,8 @@ app.use(express.static('public'));
 //     res.render('login', {layout: false});
 // };
 app.use(session({secret: 'whatlskhflha',
-                 saveUninitialized: true,
-                 resave: true
+                 saveUninitialized: false,
+                 resave: false
 }));
 
 //======
@@ -133,12 +133,15 @@ app.use(session({secret: 'whatlskhflha',
 //=======
 
 
-app.get('/login');
+app.get('/login', function(req, res, next){
+  res.render('login', {layout: false,
+                          msg: "Wrong password or Invalid username"});
+});
 app.get('/', function(req, res) {
  
     res.render('login', {layout: false});
 });
-app.post('/login/:user', function (req, res, next) {
+app.post('/login', function (req, res, next) {
 
   var user ={
     userName: "Mickey",
@@ -149,16 +152,45 @@ app.post('/login/:user', function (req, res, next) {
   // var user.password = req.body.password;
 
   if(req.body.userName === user.userName && req.body.password === user.password){
-    //req.session.user = req.body.user;
-    return res.render('/home')
+    req.session.user = user;
+
+    res.redirect('/home')
+    console.log(req.session.user.userName)
   }
 
-  res.send("invalid user!")
+  res.redirect('/login')
   //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
 });
 
+app.use(function(req, res, next){
+  if(req.session.user){
+    next();
+  }
+  else{
+    res.redirect('/login');
+  }
+})
 
+app.post('/logout', function (req, res, next) {
 
+  var msg = "logging out : " + req.session.userName;
+  delete req.session.user
+  res.redirect('login');
+
+  //res.redirect("/bye")
+
+  //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
+});
+//==========logout brute
+
+// function logout(){
+//     var msg = "logging out : " + req.session.userName;
+//     delete req.session.user
+//     res.redirect('login',{ msg:msg});
+
+// }
+
+//==========
 
 app.get('/home', function(req, res) {
  

@@ -1,76 +1,76 @@
-// var express = require('express')
-// var parseurl = require('parseurl')
-// var session = require('express-session')
+var express = require('express')
+var parseurl = require('parseurl')
+var session = require('express-session')
  
-// var app = express()
+var app = express()
  
-// app.use(session({
-//   secret: 'keyboard cat',
-//   resave: false,
-//   saveUninitialized: true
-// }))
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true
+}))
  
-// app.use(function (req, res, next) {
-//   var views = req.session.views
+app.use(function (req, res, next) {
+  var views = req.session.views
  
-//   if (!views) {
-//     views = req.session.views = {}
-//   }
+  if (!views) {
+    views = req.session.views = {}
+  }
  
-//   // get the url pathname 
-//   var pathname = parseurl(req).pathname
+  // get the url pathname 
+  var pathname = parseurl(req).pathname
  
-//   // count the views 
-//   views[pathname] = (views[pathname] || 0) + 1
+  // count the views 
+  views[pathname] = (views[pathname] || 0) + 1
  
-//   next()
-// })
+  next()
+})
  
-// app.get('/login/:user', function (req, res, next) {
+app.get('/login/:user', function (req, res, next) {
 
-//   var user = req.params.user;
+  var user = req.params.user;
 
-//   if(user == "spot" || "mawas"){
-//     req.session.user = req.params.user;
-//     return res.redirect("/hello")
-//   }
+  if(user == "spot" || "mawas"){
+    req.session.user = req.params.user;
+    return res.redirect("/hello")
+  }
 
-//   res.send("invalid username!")
-//   //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
-// });
+  res.send("invalid username!")
+  //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
+});
 
-// app.get('/logout', function (req, res, next) {
+app.get('/logout', function (req, res, next) {
 
-//   var msg = "logging out : " + req.session.user;
-//   delete req.session.user
-//   res.send(msg);
+  var msg = "logging out : " + req.session.user;
+  delete req.session.user
+  res.send(msg);
 
-//   //res.redirect("/bye")
+  //res.redirect("/bye")
 
-//   //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
-// });
+  //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
+});
 
-// app.get("/bye", function(req, res){
-//   res.send("bye - you are not logged in!")
-// });
+app.get("/bye", function(req, res){
+  res.send("bye - you are not logged in!")
+});
 
-// var loggedIn = function(req, res, next){
-//   if (req.session.user)
-//     return next();
-//   else
-//     res.redirect("/bye");
-// };
+var loggedIn = function(req, res, next){
+  if (req.session.user)
+    return next();
+  else
+    res.redirect("/bye");
+};
 
-// app.get("/hello", loggedIn, function(req, res){
-//   res.send("hello you are logged in : " + req.session.user)
-// })
+app.get("/hello", loggedIn, function(req, res){
+  res.send("hello you are logged in : " + req.session.user)
+})
 
-// app.get("/hello2", loggedIn, function(req, res){
-//   res.send("hello2 you are logged in : " + req.session.user)
-// })
+app.get("/hello2", loggedIn, function(req, res){
+  res.send("hello2 you are logged in : " + req.session.user)
+})
 
-// app.get('/bar', function (req, res, next) {
-//   res.send('you viewed this page ' + req.session.views['/bar'] + ' times')
-// })
+app.get('/bar', function (req, res, next) {
+  res.send('you viewed this page ' + req.session.views['/bar'] + ' times')
+})
 
-// app.listen("3001")
+app.listen("3001")
