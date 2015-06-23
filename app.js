@@ -54,6 +54,11 @@ var dbOptions = {
       database: 'spaza'
 };
 
+var users ={
+
+    userName:"ss",
+    password: "ss"
+  };
 
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
@@ -143,23 +148,18 @@ app.get('/', function(req, res) {
 });
 app.post('/login', function (req, res, next) {
 
-  var user ={
-    userName: req.body.userName,
-    password: req.body.password
- 
-}
-
-  // var user.userName = req.body.userName;
-  // var user.password = req.body.password;
+  
 
   if(req.body.userName === user.userName && req.body.password === user.password){
     req.session.user = user;
-
-    res.redirect('/home')
     console.log(req.session.user.userName);
+    return res.redirect('/home')
+    //
   }
-
-  res.redirect('/login')
+  else{
+    res.redirect('/login')  
+  }
+  
   //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
 });
 

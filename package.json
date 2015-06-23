@@ -16,6 +16,7 @@
     "url": "https://github.com/Django0505/codeX_ReleaseOneNarrative/issues"
   },
   "dependencies": {
+    "bcrypt": "^0.8.3",
     "body-parser": "^1.13.1",
     "express": "^4.12.3",
     "express-handlebars": "^2.0.0",
