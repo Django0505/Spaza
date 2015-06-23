@@ -144,9 +144,10 @@ app.get('/', function(req, res) {
 app.post('/login', function (req, res, next) {
 
   var user ={
-    userName: "Mickey",
-    password: "asdf"
-  }
+    userName: req.body.userName,
+    password: req.body.password
+ 
+}
 
   // var user.userName = req.body.userName;
   // var user.password = req.body.password;
@@ -155,7 +156,7 @@ app.post('/login', function (req, res, next) {
     req.session.user = user;
 
     res.redirect('/home')
-    console.log(req.session.user.userName)
+    console.log(req.session.user.userName);
   }
 
   res.redirect('/login')
