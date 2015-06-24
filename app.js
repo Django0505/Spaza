@@ -53,12 +53,16 @@ var dbOptions = {
       port: 3306,
       database: 'spaza'
 };
+//==== user object for session login
+// var user = {
+// 	 username:'',
+//      password:''
+// };
+//=================================
 
-var users ={
 
-    userName:"ss",
-    password: "ss"
-  };
+
+
 
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
@@ -137,6 +141,40 @@ app.use(session({secret: 'whatlskhflha',
 
 //=======
 
+app.post('/signup',function(req, res, next){
+	//=====session get username and password
+     // user.username = req.body.username;
+     // user.password = req.body.password;
+
+     //session store
+    req.getConnection(function(err, connection) {
+        if (err) {
+            return next(err);
+        }
+
+        var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            username: input.username,
+            password: input.password,
+            
+        };
+        connection.query('insert into users set ?', data, function(err, results) {
+            if (err)
+                return console.log("Error inserting : %s ", err);
+
+            //res.redirect('/purchasesList')
+            res.redirect('/login');
+        });
+    });
+
+
+     
+     //console.log(user);
+      //res.redirect('/login');
+	//req.session.user = user;
+    
+});
+
 
 app.get('/login', function(req, res, next){
   res.render('login', {layout: false,
@@ -147,30 +185,78 @@ app.get('/', function(req, res) {
     res.render('login', {layout: false});
 });
 app.post('/login', function (req, res, next) {
-
-  
-
-  if(req.body.userName === user.userName && req.body.password === user.password){
-    req.session.user = user;
-    console.log(req.session.user.userName);
-    return res.redirect('/home')
-    //
-  }
-  else{
-    res.redirect('/login')  
-  }
-  
-  //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
-});
-
-app.use(function(req, res, next){
-  if(req.session.user){
-    next();
+req.getConnection(function(err, connection) {
+        if (err)
+            return next(err);
+         var input = JSON.parse(JSON.stringify(req.body));
+        var data = {
+            username: input.username,
+            password :input.password
+        };
+        connection.query('SELECT username,password from users', [data], function(err, users, fields) {
+           // username = 'select * from users where username = ?';
+            //password = 'select * from users where password = ?';
+            //console.log(username, " : ", password)
+            users.forEach(function(user){
+                console.log(user.username +" : "+user.password);
+                  var username = user.username; 
+                  var password = user.password; 
+            if (err) return next(err);
+            if (!username && !password){  
+              return res.redirect('/login');
+}
+ // else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
+   else if(data.username === username && data.password === password){
+console.log(data.username, username, data.password, password)
+    //req.session.user = user;
+    //console.log(req.session.user.username);
+if(user){
+   res.redirect('home')
   }
   else{
     res.redirect('/login');
   }
-})
+    //return res.render('home');
+
+    //
+  }
+
+  // else{
+  //   res.redirect('/login')  
+  // }
+
+            })
+         
+        });
+    });
+ //console.log(req.session.user,"just before compare",req.body.username); 
+// if (!req.session.user) {
+// if (!users) {	
+// 	res.redirect('/login');
+// }
+//  // else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
+//  	 else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
+
+//     //req.session.user = user;
+//     console.log(req.session.user.username);
+//     return res.redirect('/home')
+//     //
+//   }
+//   else{
+//     res.redirect('/login')  
+//   }
+  
+  //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
+});
+
+// app.use(function(req, res, next){
+//   if(req.session.user){
+//     next();
+//   }
+//   else{
+//     res.redirect('/login');
+//   }
+// })
 
 app.post('/logout', function (req, res, next) {
 
@@ -255,10 +341,10 @@ app.get('/mostSellingCategory', function(req, res) {
     res.render('mostSellingCategory',{mostSellingCategory: mostSellingCategory});
 });
 
-app.get('/*', function(req, res) {
+// app.get('/*', function(req, res) {
  
-    res.render('error', {layout: false});
-});
+//     res.render('error', {layout: false});
+// });
 
 
 
@@ -312,8 +398,13 @@ console.log('doing my thing at http://localhost:3000/');
 
 
 
+// CREATE TABLE users
+// (
+// userID int auto_increment primary key,
+// username varchar(255),
+// password varchar(255)
 
-
+// );
 
 
 
