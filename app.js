@@ -24,38 +24,38 @@
 
 //var appSpaza = angular.module("Spaza", []);
 
-var express             = require('express');
-var exphbs              = require('express-handlebars');
-var app                 = express();
+var express = require('express');
+var exphbs = require('express-handlebars');
+var app = express();
 //==express session
-var session             = require('express-session');
+var session = require('express-session');
 //
 //var passport            = require('./auth');
 
-var totalSales          = require('./public/totalSold');
-var categories          = require('./public/categories.json');
-var tableJs             = require('./public/spazaData.json');
-var name                = require('./public/regularSales.json');
+var totalSales = require('./public/totalSold');
+var categories = require('./public/categories.json');
+var tableJs = require('./public/spazaData.json');
+var name = require('./public/regularSales.json');
 var mostSellingCategory = require('./public/mostSellingCategory.json');
 //var mostRegularSales = ;
 
-var mysql               = require('mysql'),
-    bodyParser          = require('body-parser'),
-    products            = require('./routes/products'),
-    orders              = require('./routes/orders');
+var mysql = require('mysql'),
+    bodyParser = require('body-parser'),
+    products = require('./routes/products'),
+    orders = require('./routes/orders');
 
-var myConnection        = require('express-myconnection');
+var myConnection = require('express-myconnection');
 
 var dbOptions = {
-      host: 'localhost',
-      user: 'root',
-      password: 'spot',
-      port: 3306,
-      database: 'spaza'
+    host: 'localhost',
+    user: 'root',
+    password: 'spot',
+    port: 3306,
+    database: 'spaza'
 };
 //==== user object for session login
 // var user = {
-// 	 username:'',
+//   username:'',
 //      password:''
 // };
 //=================================
@@ -67,7 +67,9 @@ var dbOptions = {
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
 // parse application/json
 app.use(bodyParser.json())
 
@@ -96,23 +98,24 @@ app.use(express.static('public'));
 
 //  //var productManager = new ProductManager(products);
 // app.get('/', function(req, res) {
- 
+
 //     res.render('login', {layout: false});
 // });
 // app.post('/login', {layout: false}, function(req, res) {
-//  	passport.authenticate('local', {
-//  		failureRedirect: '/login',
-//  		successRedirect: '/user'
-//  	});
-    
+//    passport.authenticate('local', {
+//      failureRedirect: '/login',
+//      successRedirect: '/user'
+//    });
+
 // });
 // app.get('/user', routes.user ) {
- 
+
 //     res.render('login', {layout: false});
 // };
-app.use(session({secret: 'whatlskhflha',
-                 saveUninitialized: false,
-                 resave: false
+app.use(session({
+    secret: 'whatlskhflha',
+    saveUninitialized: false,
+    resave: false
 }));
 
 //======
@@ -141,12 +144,12 @@ app.use(session({secret: 'whatlskhflha',
 
 //=======
 
-app.post('/signup',function(req, res, next){
-	//=====session get username and password
-     // user.username = req.body.username;
-     // user.password = req.body.password;
+app.post('/signup', function(req, res, next) {
+    //=====session get username and password
+    // user.username = req.body.username;
+    // user.password = req.body.password;
 
-     //session store
+    //session store
     req.getConnection(function(err, connection) {
         if (err) {
             return next(err);
@@ -156,7 +159,7 @@ app.post('/signup',function(req, res, next){
         var data = {
             username: input.username,
             password: input.password,
-            
+
         };
         connection.query('insert into users set ?', data, function(err, results) {
             if (err)
@@ -168,85 +171,88 @@ app.post('/signup',function(req, res, next){
     });
 
 
-     
-     //console.log(user);
-      //res.redirect('/login');
-	//req.session.user = user;
-    
+
+    //console.log(user);
+    //res.redirect('/login');
+    //req.session.user = user;
+
 });
 
 
-app.get('/login', function(req, res, next){
-  res.render('login', {layout: false,
-                          msg: "Wrong password or Invalid username"});
+app.get('/login', function(req, res, next) {
+    res.render('login', {
+        layout: false,
+        msg: "Wrong password or Invalid username"
+    });
 });
 app.get('/', function(req, res) {
- 
-    res.render('login', {layout: false});
+
+    res.render('login', {
+        layout: false
+    });
 });
-app.post('/login', function (req, res, next) {
-req.getConnection(function(err, connection) {
+app.post('/login', function(req, res, next) {
+    req.getConnection(function(err, connection) {
         if (err)
             return next(err);
-         var input = JSON.parse(JSON.stringify(req.body));
+        var input = JSON.parse(JSON.stringify(req.body));
         var data = {
             username: input.username,
-            password :input.password
+            password: input.password
         };
         connection.query('SELECT username,password from users', [data], function(err, users, fields) {
-           // username = 'select * from users where username = ?';
+            // username = 'select * from users where username = ?';
             //password = 'select * from users where password = ?';
             //console.log(username, " : ", password)
-            users.forEach(function(user){
-                console.log(user.username +" : "+user.password);
-                  var username = user.username; 
-                  var password = user.password; 
-            if (err) return next(err);
-            if (!username && !password){  
-              return res.redirect('/login');
-}
- // else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
-   else if(data.username === username && data.password === password){
-console.log(data.username, username, data.password, password)
-    //req.session.user = user;
-    //console.log(req.session.user.username);
-if(user){
-   res.redirect('home')
-  }
-  else{
-    res.redirect('/login');
-  }
-    //return res.render('home');
+            users.forEach(function(user) {
+                console.log(user.username + " : " + user.password);
+                var username = user.username;
+                var password = user.password;
+                if (err) return next(err);
+                if (!username && !password) {
+                    return res.redirect('/login');
+                }
+                // else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
+                else if (data.username === username && data.password === password) {
+                    console.log(data.username, username, data.password, password)
+                    //req.session.user = user;
+                    //console.log(req.session.user.username);
+                    if (user) {
+                        res.redirect('home')
+                    } else {
+                        res.redirect('/login');
+                    }
+                    //return res.render('home');
 
-    //
-  }
+                    //
+                }
 
-  // else{
-  //   res.redirect('/login')  
-  // }
+                // else{
+                //   res.redirect('/login')  
+                // }
 
             })
-         
+
         });
     });
- //console.log(req.session.user,"just before compare",req.body.username); 
-// if (!req.session.user) {
-// if (!users) {	
-// 	res.redirect('/login');
-// }
-//  // else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
-//  	 else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
+    //console.log(req.session.user,"just before compare",req.body.username); 
+    // if (!req.session.user) {
+    // if (!users) {  
+    //  res.redirect('/login');
+    // }
+    //  // else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
+    //     else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
 
-//     //req.session.user = user;
-//     console.log(req.session.user.username);
-//     return res.redirect('/home')
-//     //
-//   }
-//   else{
-//     res.redirect('/login')  
-//   }
-  
-  //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
+    //     //req.session.user = user;
+    //     console.log(req.session.user.username);
+    //     return res.redirect('/home')
+    //     //
+    //   }
+    //   else{
+    //     res.redirect('/login')  
+    //   }
+
+    //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
 });
 
 // app.use(function(req, res, next){
@@ -258,15 +264,15 @@ if(user){
 //   }
 // })
 
-app.post('/logout', function (req, res, next) {
+app.post('/logout', function(req, res, next) {
 
-  var msg = "logging out : " + req.session.userName;
-  delete req.session.user
-  res.redirect('login');
+    var msg = "logging out : " + req.session.userName;
+    delete req.session.user
+    res.redirect('login');
 
-  //res.redirect("/bye")
+    //res.redirect("/bye")
 
-  //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
+    //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
 });
 //==========logout brute
 
@@ -280,69 +286,79 @@ app.post('/logout', function (req, res, next) {
 //==========
 
 app.get('/home', function(req, res) {
- 
-    res.render('home',{totalSales:totalSales});
+
+    res.render('home', {
+        totalSales: totalSales
+    });
 });
 app.get('/totalSales', function(req, res) {
- 
-    res.render('totalSales',{totalSales:totalSales});
+
+    res.render('totalSales', {
+        totalSales: totalSales
+    });
 });
-app.get('/products',products.show);
-app.post('/product',products.addProd);
-app.post('/product/updateProd/:id',products.updateProd);
-app.post('/product/deleteProd/:id',products.deleteProd);
+app.get('/products', products.show);
+app.post('/product', products.addProd);
+app.post('/product/updateProd/:id', products.updateProd);
+app.post('/product/deleteProd/:id', products.deleteProd);
 app.get('/regularSales', function(req, res) {
- 
-    res.render('regularSales',{regularSales:name});
+
+    res.render('regularSales', {
+        regularSales: name
+    });
 });
 app.get('/categories', function(req, res) {
-    
+
     //var categories = yourModuleThatProcessTheData.getCategories();
 
-    res.render('categories',{categories:categories});
+    res.render('categories', {
+        categories: categories
+    });
 });
 //=======================================
 //actions for Categories
 
-app.get('/CatList',products.showCatList);
-app.post('/cat',products.addCat);
-app.post('/cat/updateCat/:id',products.updateCat);
-app.post('/cat/deleteCat/:id',products.deleteCat);
+app.get('/CatList', products.showCatList);
+app.post('/cat', products.addCat);
+app.post('/cat/updateCat/:id', products.updateCat);
+app.post('/cat/deleteCat/:id', products.deleteCat);
 
 //========================================
 //actions for Suppliers
 
-app.get('/supplier',products.suppliers);
-app.post('/supply',products.addSupplier);
-app.post('/supply/deleteSupplier/:id',products.deleteSupplier);
+app.get('/supplier', products.suppliers);
+app.post('/supply', products.addSupplier);
+app.post('/supply/deleteSupplier/:id', products.deleteSupplier);
 //=========================================
 //actions for purchases
-app.get('/purchasesList',products.purchases);
+app.get('/purchasesList', products.purchases);
 
-app.get('/purchasesList',products.suppliers);
-app.get('/products',products.show);
-app.post('/purchase',products.addPurchase);
-app.post('/purchase/deletePurchase/:id',products.deletePurchase);
+app.get('/purchasesList', products.suppliers);
+app.get('/products', products.show);
+app.post('/purchase', products.addPurchase);
+app.post('/purchase/deletePurchase/:id', products.deletePurchase);
 
 //===========================================
 //actions for Sales
-app.get('/spazaData',products.sales);
+app.get('/spazaData', products.sales);
 
-app.get('/spazaData',products.suppliers);
-app.get('/products',products.show);
-app.post('/sale',products.addSale);
-app.post('/sale/deleteSale/:id',products.deleteSale);
+app.get('/spazaData', products.suppliers);
+app.get('/products', products.show);
+app.post('/sale', products.addSale);
+app.post('/sale/deleteSale/:id', products.deleteSale);
 
 
 app.get('/mostSellingCategory', function(req, res) {
-    
+
     //var mostSellingCategory = yourModuleThatProcessTheData.getCategories();
 
-    res.render('mostSellingCategory',{mostSellingCategory: mostSellingCategory});
+    res.render('mostSellingCategory', {
+        mostSellingCategory: mostSellingCategory
+    });
 });
 
 // app.get('/*', function(req, res) {
- 
+
 //     res.render('error', {layout: false});
 // });
 
@@ -350,45 +366,13 @@ app.get('/mostSellingCategory', function(req, res) {
 
 
 var port = process.env.PORT || 3000;
-var server = app.listen(port, function () {
+var server = app.listen(port, function() {
 
-  var host = server.address().address
-  var port = server.address().port
+    var host = server.address().address
+    var port = server.address().port
 
-console.log('doing my thing at http://localhost:3000/');
+    console.log('doing my thing at http://localhost:3000/');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -405,9 +389,6 @@ console.log('doing my thing at http://localhost:3000/');
 // password varchar(255)
 
 // );
-
-
-
 
 
 
