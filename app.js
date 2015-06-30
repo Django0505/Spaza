@@ -42,7 +42,8 @@ var mostSellingCategory = require('./public/mostSellingCategory.json');
 var mysql = require('mysql'),
     bodyParser = require('body-parser'),
     products = require('./routes/products'),
-    orders = require('./routes/orders');
+    orders = require('./routes/orders'),
+    bcrypt = require('bcrypt');
 
 var myConnection = require('express-myconnection');
 
@@ -116,6 +117,7 @@ app.use(session({
     secret: 'whatlskhflha',
     saveUninitialized: false,
     resave: false
+
 }));
 
 //======
@@ -127,13 +129,8 @@ app.use(session({
 //   password: "nkunzi"
 // }
 
-// var checkUser = function(req, res, next){
-//   if (req.session.user){
-//     return next();
-//   }
-//   // the user is not logged in redirect him to the login page
-//   res.redirect('login');
-// };
+//var checkUser = 
+
 
 // app.get('/users', checkUser, function(req, res){
 //   var userData = userService.getUserData();
@@ -161,13 +158,31 @@ app.post('/signup', function(req, res, next) {
             password: input.password,
 
         };
-        connection.query('insert into users set ?', data, function(err, results) {
-            if (err)
-                return console.log("Error inserting : %s ", err);
 
-            //res.redirect('/purchasesList')
-            res.redirect('/login');
+        //bcrypt the password===
+        bcrypt.genSalt(10, function(err, salt) {
+            bcrypt.hash(input.password, salt, function(err, hash) {
+                // Store hash in your password DB. 
+                data.password = hash;
+                connection.query('insert into users set ?', data, function(err, results) {
+                    if (err)
+                        console.log("Error inserting : %s ",err );
+
+                    res.render('home', {msg:"Successfully signed up"});
+                });
+            });
         });
+
+
+        //================
+
+        // connection.query('insert into users set ?', data, function(err, results) {
+        //     if (err)
+        //         return console.log("Error inserting : %s ", err);
+
+        //     //res.redirect('/purchasesList')
+        //     res.redirect('/login');
+        // });
     });
 
 
@@ -200,11 +215,16 @@ app.post('/login', function(req, res, next) {
             username: input.username,
             password: input.password
         };
+
         connection.query('SELECT username,password from users', [data], function(err, users, fields) {
             // username = 'select * from users where username = ?';
             //password = 'select * from users where password = ?';
             //console.log(username, " : ", password)
+            //var loggedIn = req.params.user; ///////////check
             users.forEach(function(user) {
+            bcrypt.compare(data.password, user.password, function(err, pass){
+
+            
                 console.log(user.username + " : " + user.password);
                 var username = user.username;
                 var password = user.password;
@@ -215,21 +235,26 @@ app.post('/login', function(req, res, next) {
                 // else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
                 else if (data.username === username && data.password === password) {
                     console.log(data.username, username, data.password, password)
-                    //req.session.user = user;
-                    //console.log(req.session.user.username);
-                    if (user) {
-                        res.redirect('home')
+                    req.session.user = user;
+                    console.log(req.session.user.username);
+
+                    if (user && req.session.user) {
+                        console.log(user, " : session =====>>> ", req.session.user);
+                        res.redirect('/home')
+                    } else if (!req.session.user) {
+                        res.redirect('/login');
                     } else {
                         res.redirect('/login');
                     }
                     //return res.render('home');
+
 
                     //
                 }
 
                 // else{
                 //   res.redirect('/login')  
-                // }
+             })   // }
 
             })
 
@@ -237,9 +262,9 @@ app.post('/login', function(req, res, next) {
     });
     //console.log(req.session.user,"just before compare",req.body.username); 
     // if (!req.session.user) {
-    // if (!users) {  
+    // if (!user) {  
     //  res.redirect('/login');
-    // }
+    // }}
     //  // else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
     //     else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
 
@@ -266,10 +291,11 @@ app.post('/login', function(req, res, next) {
 
 app.post('/logout', function(req, res, next) {
 
-    var msg = "logging out : " + req.session.userName;
+    var msg = "logging out : " + req.session.user;
+
     delete req.session.user
     res.redirect('login');
-
+    console.log(msg);
     //res.redirect("/bye")
 
     //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
@@ -284,7 +310,14 @@ app.post('/logout', function(req, res, next) {
 // }
 
 //==========
-
+app.use(function(req, res, next) {
+    if (req.session.user) {
+        return next();
+    }
+    // the user is not logged in redirect him to the login page
+    res.redirect('login');
+});
+//===========
 app.get('/home', function(req, res) {
 
     res.render('home', {
@@ -389,12 +422,3 @@ var server = app.listen(port, function() {
 // password varchar(255)
 
 // );
-
-
-
-
-
-
-
-
-
