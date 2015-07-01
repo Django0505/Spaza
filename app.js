@@ -215,6 +215,7 @@ app.post('/login', function(req, res, next) {
             username: input.username,
             password: input.password
         };
+        console.log(data);
 
         connection.query('SELECT username,password from users', [data], function(err, users, fields) {
             // username = 'select * from users where username = ?';
@@ -224,7 +225,7 @@ app.post('/login', function(req, res, next) {
             users.forEach(function(user) {
             bcrypt.compare(data.password, user.password, function(err, pass){
 
-            
+                console.log("ok this is the encrypted password : ",data.password);
                 console.log(user.username + " : " + user.password);
                 var username = user.username;
                 var password = user.password;
@@ -246,10 +247,7 @@ app.post('/login', function(req, res, next) {
                     } else {
                         res.redirect('/login');
                     }
-                    //return res.render('home');
-
-
-                    //
+                
                 }
 
                 // else{
