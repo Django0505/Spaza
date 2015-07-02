@@ -378,7 +378,7 @@ var server = app.listen(port, function() {
 
 
 // DELIMITER $$
-// CREATE DEFINER=`root`@`localhost` PROCEDURE `createUser`(
+// CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_createUser`(
 //     IN username VARCHAR(30),
 //     IN password TEXT(255)
 // )
@@ -398,10 +398,12 @@ var server = app.listen(port, function() {
 //         values
 //         (
 
-//             username,
-//             password
+//             input.username,
+//             input.password
 //         );
 
 //     END IF;
 // END$$
 // DELIMITER ;
+
+
