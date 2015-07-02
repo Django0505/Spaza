@@ -166,9 +166,11 @@ app.post('/signup', function(req, res, next) {
                 data.password = hash;
                 connection.query('insert into users set ?', data, function(err, results) {
                     if (err)
-                        console.log("Error inserting : %s ",err );
+                        console.log("Error inserting : %s ", err);
 
-                    res.render('home', {msg:"Successfully signed up"});
+                    res.render('home', {
+                        msg: "Successfully signed up"
+                    });
                 });
             });
         });
@@ -192,108 +194,56 @@ app.post('/signup', function(req, res, next) {
     //req.session.user = user;
 
 });
-
-
-app.get('/login', function(req, res, next) {
-    res.render('login', {
-        layout: false,
-        msg: "Wrong password or Invalid username"
-    });
-});
-app.get('/', function(req, res) {
-
+app.get(['/', '/login'], function(req, res) {
     res.render('login', {
         layout: false
     });
 });
-app.post('/login', function(req, res, next) {
+
+
+app.post("/login", function(req, res, next) {
+    var input = JSON.parse(JSON.stringify(req.body));
+
     req.getConnection(function(err, connection) {
         if (err)
             return next(err);
-        var input = JSON.parse(JSON.stringify(req.body));
-        var data = {
-            username: input.username,
-            password: input.password
-        };
-        console.log(data);
 
-        connection.query('SELECT username,password from users', [data], function(err, users, fields) {
-            // username = 'select * from users where username = ?';
-            //password = 'select * from users where password = ?';
-            //console.log(username, " : ", password)
-            //var loggedIn = req.params.user; ///////////check
-            users.forEach(function(user) {
-            bcrypt.compare(data.password, user.password, function(err, pass){
-
-                console.log("ok this is the encrypted password : ",data.password);
-                console.log(user.username + " : " + user.password);
-                var username = user.username;
-                var password = user.password;
-                if (err) return next(err);
-                if (!username && !password) {
-                    return res.redirect('/login');
-                }
-                // else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
-                else if (data.username === username && data.password === password) {
-                    console.log(data.username, username, data.password, password)
-                    req.session.user = user;
-                    console.log(req.session.user.username);
-
-                    if (user && req.session.user) {
-                        console.log(user, " : session =====>>> ", req.session.user);
-                        res.redirect('/home')
-                    } else if (!req.session.user) {
-                        res.redirect('/login');
-                    } else {
-                        res.redirect('/login');
-                    }
-                
+        connection.query('SELECT * from users WHERE username=?', [input.username], function(err, user) {
+            if (user.length == 0) {
+                console.log("User doesn't exist!");
+                return res.redirect("/login")
+            }
+            bcrypt.compare(input.password, user[0].password, function(err, pass) {
+            console.log(user)
+            
+                if (err) {
+                    console.log(err)
                 }
 
-                // else{
-                //   res.redirect('/login')  
-             })   // }
-
+                if (pass) {
+                    req.session.user = input.username;
+                    return res.redirect("/home")
+                } else {
+                    return res.render('login', {
+                        layout: false,
+                        msg: "Wrong password or Invalid username"
+                    });
+                    // res.redirect("/login")
+                }
             })
+        })
+    })
+})
 
-        });
-    });
-    //console.log(req.session.user,"just before compare",req.body.username); 
-    // if (!req.session.user) {
-    // if (!user) {  
-    //  res.redirect('/login');
-    // }}
-    //  // else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
-    //     else if(req.body.username === req.session.user.username && req.body.password === req.session.user.password){
 
-    //     //req.session.user = user;
-    //     console.log(req.session.user.username);
-    //     return res.redirect('/home')
-    //     //
-    //   }
-    //   else{
-    //     res.redirect('/login')  
-    //   }
-
-    //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
-});
-
-// app.use(function(req, res, next){
-//   if(req.session.user){
-//     next();
-//   }
-//   else{
-//     res.redirect('/login');
-//   }
-// })
 
 app.post('/logout', function(req, res, next) {
 
     var msg = "logging out : " + req.session.user;
 
     delete req.session.user
-    res.redirect('login');
     console.log(msg);
+    return res.redirect('login');
     //res.redirect("/bye")
 
     //res.send('you viewed this page ' + req.session.views['/foo'] + ' times')
@@ -420,3 +370,38 @@ var server = app.listen(port, function() {
 // password varchar(255)
 
 // );
+
+
+
+
+
+
+
+// DELIMITER $$
+// CREATE DEFINER=`root`@`localhost` PROCEDURE `createUser`(
+//     IN username VARCHAR(30),
+//     IN password TEXT(255)
+// )
+// BEGIN
+//     if ( select exists (select 1 from users where username = username) ) THEN
+
+//         select 'Username Exists !!';
+
+//     ELSE
+
+//         insert into users
+//         (
+
+//             username,
+//             password
+//         )
+//         values
+//         (
+
+//             username,
+//             password
+//         );
+
+//     END IF;
+// END$$
+// DELIMITER ;
