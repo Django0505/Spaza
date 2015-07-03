@@ -31,13 +31,18 @@ exports.showCatList = function(req, res, next) {
     req.getConnection(function(err, connection) {
         if (err)
             return next(err);
+         connection.query('SELECT * from users', [], function(err, prod, fields) {
+            if (err)
+                return next(err);
         connection.query('SELECT * from categories', [], function(err, results, fields) {
             if (err) return next(err);
 
             res.render('CatList', {
-                categories: results
+                categories: results,
+                roleId : session.user.role
             });
         });
+    });
     });
 };
 
