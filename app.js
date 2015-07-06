@@ -156,6 +156,7 @@ app.post('/signup', function(req, res, next) {
         var data = {
             username: input.username,
             password: input.password,
+            role: false
 
         };
 
@@ -168,8 +169,9 @@ app.post('/signup', function(req, res, next) {
                     if (err)
                         console.log("Error inserting : %s ", err);
 
-                    res.render('home', {
-                        msg: "Successfully signed up"
+                    res.render('login', {
+                        msg: "Successfully signed up",
+                        layout: false
                     });
                 });
             });
@@ -222,6 +224,7 @@ app.post("/login", function(req, res, next) {
 
                 if (pass) {
                     req.session.user = input.username;
+                    req.session.role = user[0].role;
                     return res.redirect("/home")
                 } else {
                     return res.render('login', {
@@ -260,12 +263,24 @@ app.post('/logout', function(req, res, next) {
 //==========
 app.use(function(req, res, next) {
     if (req.session.user) {
+        // check where the user want to go
+        // check if he can go there...
+        // var adminRoutes = {
+        //     "/routeOne" : "",
+
+        // };
+
         return next();
+        //else
+        // redirect to acess denied
     }
     // the user is not logged in redirect him to the login page
     res.redirect('login');
 });
 //===========
+
+
+
 app.get('/home', function(req, res) {
 
     res.render('home', {
@@ -293,7 +308,9 @@ app.get('/categories', function(req, res) {
     //var categories = yourModuleThatProcessTheData.getCategories();
 
     res.render('categories', {
-        categories: categories
+        categories: categories,
+        role: req.session.role,
+        msg:"You do not have permission to view this page!"
     });
 });
 //=======================================
@@ -334,7 +351,9 @@ app.get('/mostSellingCategory', function(req, res) {
     //var mostSellingCategory = yourModuleThatProcessTheData.getCategories();
 
     res.render('mostSellingCategory', {
-        mostSellingCategory: mostSellingCategory
+        mostSellingCategory: mostSellingCategory,
+        role: req.session.role,
+        msg:"You do not have permission to view this page!"
     });
 });
 
@@ -406,4 +425,11 @@ var server = app.listen(port, function() {
 // END$$
 // DELIMITER ;
 
+// ALTER TABLE users
+// DROP COLUMN role
+// ALTER TABLE users
+// ADD COLUMN role
+
+// ALTER TABLE users
+// add COLUMN role varchar(255);
 
