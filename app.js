@@ -61,7 +61,6 @@ var dbOptions = {
 // };
 //=================================
 
-admin = 1;
 
 
 
@@ -157,7 +156,6 @@ app.post('/signup', function(req, res, next) {
         var data = {
             username: input.username,
             password: input.password,
-            role: 3
 
         };
 
@@ -221,17 +219,9 @@ app.post("/login", function(req, res, next) {
                 if (err) {
                     console.log(err)
                 }
-                var User = function(userDetails){
-                    ///????
-                    this.userName = userDetails.name;
-                    //
-                    this.isAdmin = function(){
-                        // check based on user details
-                        return true;
-                    }
-                }    
+
                 if (pass) {
-                    req.session.user = new User(input);
+                    req.session.user = input.username;
                     return res.redirect("/home")
                 } else {
                     return res.render('login', {
@@ -368,15 +358,7 @@ var server = app.listen(port, function() {
 
 
 
-// ALTER TABLE users
-// ADD role int
-// INSERT INTO users (userID, username, password, role)
-// VALUES (21,'Nelisa','pass',1);
-// update  users (userID, username, password, role)
-// VALUES (21,'Nelisa','pass',1);
-// UPDATE users
-// SET role=1
-// WHERE userID=22;
+
 
 
 
