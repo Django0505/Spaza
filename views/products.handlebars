@@ -21,6 +21,7 @@
 
 
 <h2>Product list</h2>
+{{#if Admin}}
 <div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalAdd">Add New Product</button></div>
 
 <table class="table">
@@ -40,12 +41,15 @@
 			    <td>{{category_name}}</td>
 			    <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{this.product_id}}">Update</button></td>
 			    <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalDelete_{{this.product_id}}">Delete</button></td>
+          
 			</tr>
 		    {{/each}}
       </tbody>
 
 </table>
-
+{{else}}
+  {{msg}}
+{{/if}}
 
 <!--Ajax display  -->
 <div id="ajax">

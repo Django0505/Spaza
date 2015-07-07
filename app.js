@@ -1,29 +1,3 @@
-// var express = require('express');
-// var exphbs = require('express-handlebars');
-// var app = express();
-// app.engine('handlebars', exphbs({
-//     defaultLayout: 'main'
-// }));
-
-//some useless comments
-
-// app.set('view engine', 'handlebars');
-// app.use(express.static('views'));
-
-// app.get('/', function(req, res) {
-//     res.render('index');
-// });
-
-
-// app.listen(3000);
-// console.log('doing my thing at http://3000');
-
-// cmd shift r hard refresh
-
-
-
-//var appSpaza = angular.module("Spaza", []);
-
 var express = require('express');
 var exphbs = require('express-handlebars');
 var app = express();
@@ -31,7 +5,7 @@ var app = express();
 var session = require('express-session');
 //
 //var passport            = require('./auth');
-
+Admin = false;
 var totalSales = require('./public/totalSold');
 var categories = require('./public/categories.json');
 var tableJs = require('./public/spazaData.json');
@@ -89,6 +63,7 @@ app.use(bodyParser.json())
 
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
+
 }));
 
 app.set('view engine', 'handlebars');
@@ -98,20 +73,7 @@ app.use(express.static('public'));
 // app.use(passport.session());
 
 //  //var productManager = new ProductManager(products);
-// app.get('/', function(req, res) {
 
-//     res.render('login', {layout: false});
-// });
-// app.post('/login', {layout: false}, function(req, res) {
-//    passport.authenticate('local', {
-//      failureRedirect: '/login',
-//      successRedirect: '/user'
-//    });
-
-// });
-// app.get('/user', routes.user ) {
-
-//     res.render('login', {layout: false});
 // };
 app.use(session({
     secret: 'whatlskhflha',
@@ -156,7 +118,7 @@ app.post('/signup', function(req, res, next) {
         var data = {
             username: input.username,
             password: input.password,
-            role: false
+            role: 'notAdmin'
 
         };
 
@@ -216,7 +178,7 @@ app.post("/login", function(req, res, next) {
                 return res.redirect("/login")
             }
             bcrypt.compare(input.password, user[0].password, function(err, pass) {
-            console.log(user)
+            console.log('logged in as',user)
             
                 if (err) {
                     console.log(err)
@@ -225,6 +187,16 @@ app.post("/login", function(req, res, next) {
                 if (pass) {
                     req.session.user = input.username;
                     req.session.role = user[0].role;
+                    username2 = req.session.user;
+                    console.log(req.session.role,"<==========")
+                    //  if(req.session.role == 'Admin'){
+                    //     //Admin = true;
+                    //     //req.session.user = "Admin"
+                        
+                    //     Admin = req.session.role;
+                    //     console.log("========>",Admin);
+                    // }
+                    console.log(username2);
                     return res.redirect("/home")
                 } else {
                     return res.render('login', {
@@ -263,12 +235,23 @@ app.post('/logout', function(req, res, next) {
 //==========
 app.use(function(req, res, next) {
     if (req.session.user) {
+
         // check where the user want to go
         // check if he can go there...
         // var adminRoutes = {
         //     "/routeOne" : "",
 
         // };
+        //console.log(req.session.role);
+       if(req.session.role == 'Admin'){
+                        //Admin = true;
+                        //req.session.user = "Admin"
+                        
+                        Admin = true;
+                        console.log("========>", Admin);
+
+
+                    }
 
         return next();
         //else
@@ -284,7 +267,8 @@ app.use(function(req, res, next) {
 app.get('/home', function(req, res) {
 
     res.render('home', {
-        totalSales: totalSales
+        totalSales: totalSales,
+        username: username2
     });
 });
 app.get('/totalSales', function(req, res) {
@@ -300,7 +284,9 @@ app.post('/product/deleteProd/:id', products.deleteProd);
 app.get('/regularSales', function(req, res) {
 
     res.render('regularSales', {
-        regularSales: name
+        regularSales: name,
+        Admin: req.session.role,
+        msg:"You do not have permission to view this page!"
     });
 });
 app.get('/categories', function(req, res) {
@@ -313,6 +299,12 @@ app.get('/categories', function(req, res) {
         msg:"You do not have permission to view this page!"
     });
 });
+//===========users
+app.get('/users', products.showUsers);
+//app.post('/cat', products.addCat);
+app.post('/user/updateUser/:id', products.updateUser);
+//app.post('/user/deleteUser/:id', products.deleteUser);
+
 //=======================================
 //actions for Categories
 

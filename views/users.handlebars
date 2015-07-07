@@ -1,0 +1,131 @@
+<!-- Modal Update -->       
+{{#users}}
+
+<div class="modal fade" id="myModal_{{this.userID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Update {{this.username}}</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/user/updateUser/{{this.userID}}" method="POST">
+			<!-- <p>User  Name: </p><input type="text" name="username" value="{{this.username}}" 
+      placeholder="{{this.username}}"> -->
+      <p>Make {{this.username}} Admin?</p>
+      {{!-- <p>user Name: </p><input type="text" name="username" value="{{this.username}}" placeholder="{{this.username}}"> --}}  
+      
+       
+	     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Submit</button>
+      	</div>
+	   </form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+
+{{/users}}
+
+
+
+<!-- Modal Add user -->    
+
+<!-- <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add New User</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/user" method="POST">
+			<p>User  Name: </p><input type="text"  name="username" placeholder="user name">
+			<p>user Name: </p><select name="role">
+    {{#users}}
+    <option value="{{role}}">{{username}}</option>
+    {{/users}}
+    </select> 
+	     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Add user</button>
+      </div>
+		</form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal Delete-->        
+{{#users}}
+<div class="modal fade" id="myModalDelete_{{this.userID}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete {{this.username}}</h4>
+      </div>
+      <div class="modal-body">
+        <form action="/user/deleteUser/{{this.userID}}" method="POST">
+          <h4 id="redMe">Are you sure you want to delete <span class="prodName">{{this.username}}</span>?</h4>
+			{{!-- <p>user  Name: </p><input type="text"  name="username" value="{{username}}"> --}}
+	     <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <button class="btn btn-primary" type="submit">Delete</button>
+      </div>
+		</form>
+      </div>
+   
+     
+    </div>
+  </div>
+</div>
+{{/users}}
+
+
+<h2>users</h2>
+
+{{#if Admin}}
+<div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalAdd">Add New user</button></div>
+<table class="table">
+
+	   <thead>
+        
+          <th>user ID</th>
+          <th>user Name</th>
+          
+      
+      </thead>
+      <tbody>
+      	     {{#users}}
+			<tr>
+			    <td>{{role}}</td>
+			    <td>{{username}}</td>
+			    <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{this.role}}">Update</button></td>
+			    <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalDelete_{{this.role}}">Delete</button></td>
+			</tr>
+		    {{/users}}
+      </tbody>
+
+</table>
+{{else}}
+  {{msg}}
+{{/if}}

@@ -1,3 +1,4 @@
+Admin = false;
 exports.returnsMostSellingProd = function(productsSoldMap) {
 
     var mostSold = {
