@@ -104,23 +104,27 @@
 <h2>users</h2>
 
 {{#if Admin}}
-<div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalAdd">Add New user</button></div>
+
 <table class="table">
 
 	   <thead>
         
-          <th>user ID</th>
           <th>user Name</th>
+          <th>Role</th>
           
       
       </thead>
       <tbody>
       	     {{#users}}
 			<tr>
-			    <td>{{role}}</td>
 			    <td>{{username}}</td>
-			    <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{this.role}}">Update</button></td>
-			    <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalDelete_{{this.role}}">Delete</button></td>
+			    <td>{{role}}</td>
+			    <td>
+            <form action="Admin/{{this.userID}}" method="POST">
+            <button type="submit" class="btn btn-primary btn-sm"> Admin</button></form></td>
+            <td>
+            <form action="notAdmin/{{this.userID}}" method="POST">
+			    <button type="submit" class="btn btn-danger btn-sm"> Not Admin</button></form></td>
 			</tr>
 		    {{/users}}
       </tbody>

@@ -425,12 +425,26 @@ exports.updateCat = function(req, res, next) {
 
 
 //==updating a user==
-exports.updateUser = function(req, res, next) {
+exports.Admin = function(req, res, next) {
 
-    //var data = JSON.parse(JSON.stringify(req.body));
+    var data = JSON.parse(JSON.stringify(req.body));
     var id = req.params.id;
     req.getConnection(function(err, connection) {
-        connection.query('UPDATE users SET role = Admin WHERE userID = ?',  id, function(err, rows) {
+        connection.query('UPDATE users SET role = "Admin" WHERE userID = ?',id, function(err, rows) {
+            if (err) {
+                console.log("Error Updating : %s ", err);
+            }
+            res.redirect('/users');
+        });
+
+    });
+};
+exports.notAdmin = function(req, res, next) {
+
+    var data = JSON.parse(JSON.stringify(req.body));
+    var id = req.params.id;
+    req.getConnection(function(err, connection) {
+        connection.query('UPDATE users SET role = "notAdmin" WHERE userID = ?',id, function(err, rows) {
             if (err) {
                 console.log("Error Updating : %s ", err);
             }

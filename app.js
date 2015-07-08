@@ -302,7 +302,9 @@ app.get('/categories', function(req, res) {
 //===========users
 app.get('/users', products.showUsers);
 //app.post('/cat', products.addCat);
-app.post('/user/updateUser/:id', products.updateUser);
+app.post('/Admin/:id', products.Admin);
+app.post('/notAdmin/:id', products.notAdmin);
+
 //app.post('/user/deleteUser/:id', products.deleteUser);
 
 //=======================================
