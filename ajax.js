@@ -1,3 +1,5 @@
+//implement search on spaza 
+
 var xhr = new XMLHttpRequest();
 //callback the code the browser will run
 
