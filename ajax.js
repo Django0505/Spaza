@@ -1,4 +1,5 @@
-//implement search on spaza 
+//implement search on spaza    
+//read on ajax and jquery
 
 var xhr = new XMLHttpRequest();
 //callback the code the browser will run
