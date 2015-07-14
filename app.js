@@ -178,8 +178,8 @@ app.post("/login", function(req, res, next) {
                 return res.redirect("/login")
             }
             bcrypt.compare(input.password, user[0].password, function(err, pass) {
-            console.log('logged in as',user)
-            
+                console.log('logged in as', user)
+
                 if (err) {
                     console.log(err)
                 }
@@ -188,11 +188,11 @@ app.post("/login", function(req, res, next) {
                     req.session.user = input.username;
                     req.session.role = user[0].role;
                     username2 = req.session.user;
-                    console.log(req.session.role,"<==========")
+                    console.log(req.session.role, "<==========")
                     //  if(req.session.role == 'Admin'){
                     //     //Admin = true;
                     //     //req.session.user = "Admin"
-                        
+
                     //     Admin = req.session.role;
                     //     console.log("========>",Admin);
                     // }
@@ -243,15 +243,15 @@ app.use(function(req, res, next) {
 
         // };
         //console.log(req.session.role);
-       if(req.session.role == 'Admin'){
-                        //Admin = true;
-                        //req.session.user = "Admin"
-                        
-                        Admin = true;
-                        console.log("========>", Admin);
+        if (req.session.role == 'Admin') {
+            //Admin = true;
+            //req.session.user = "Admin"
+
+            Admin = true;
+            console.log("========>", Admin);
 
 
-                    }
+        }
 
         return next();
         //else
@@ -286,7 +286,7 @@ app.get('/regularSales', function(req, res) {
     res.render('regularSales', {
         regularSales: name,
         Admin: req.session.role,
-        msg:"You do not have permission to view this page!"
+        msg: "You do not have permission to view this page!"
     });
 });
 app.get('/categories', function(req, res) {
@@ -296,7 +296,7 @@ app.get('/categories', function(req, res) {
     res.render('categories', {
         categories: categories,
         role: req.session.role,
-        msg:"You do not have permission to view this page!"
+        msg: "You do not have permission to view this page!"
     });
 });
 //===========users
@@ -347,7 +347,7 @@ app.get('/mostSellingCategory', function(req, res) {
     res.render('mostSellingCategory', {
         mostSellingCategory: mostSellingCategory,
         role: req.session.role,
-        msg:"You do not have permission to view this page!"
+        msg: "You do not have permission to view this page!"
     });
 });
 
@@ -356,7 +356,17 @@ app.get('/mostSellingCategory', function(req, res) {
 //     res.render('error', {layout: false});
 // });
 
-
+app.get('/search', function(req, res) {
+    connection.query('SELECT product from products where product like "%' + req.query.key + '%"',
+        function(error, rows, fields) {
+            if (error) throw error;
+            var data = [];
+            for (i = 0; i > rows.length; i++) {
+                data.push(rows[i].first_name);
+            }
+            res.end(JSON.stringify(data));
+        });
+});
 
 
 var port = process.env.PORT || 3000;
@@ -426,4 +436,3 @@ var server = app.listen(port, function() {
 
 // ALTER TABLE users
 // add COLUMN role varchar(255);
-
