@@ -19,7 +19,9 @@
 </form> -->
 
 
-{{{search}}}
+<form class="navbar-form navbar-left">
+        <input type="text" id="productSearch"  class="form-control col-lg-8" placeholder="Search">
+</form>
 <h2>Product list</h2>
 {{#if Admin}}
 <div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalAdd">Add New Product</button></div>
@@ -51,10 +53,7 @@
   {{msg}}
 {{/if}}
 
-<!--Ajax display  -->
-<div id="ajax">
-  
-</div><!-- /#ajax -->
+
 
 
 

@@ -3,6 +3,36 @@
  */
 
 //todo - fix the error handling
+
+
+//=======search
+
+exports.search = function(req, res, next){
+    req.getConnection(function(err, connection){
+        if(err)
+                return next(err);
+        var searchQuery = req.params.searchQuery;
+        searchQuery = "%" + searchQuery + "%";
+        console.log(searchQuery);
+        connection.query("SELECT * from products where product_name LIKE ?",searchQuery, function(err, results){
+            if (err) return next(err);
+              var Admin = false;
+            if (req.session.role == "Admin")
+                Admin = true
+            res.render('searchResults', {
+                products: results,
+                Admin: Admin,
+                msg: "You don't have enough priviledges to view this page!"
+                //layout: false
+
+            });
+        });
+    });
+};
+
+
+
+
 //=========users
 exports.showUsers = function(req, res, next) {
 

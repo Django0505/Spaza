@@ -326,9 +326,10 @@ app.post('/supply/deleteSupplier/:id', products.deleteSupplier);
 app.get('/purchasesList', products.purchases);
 
 app.get('/purchasesList', products.suppliers);
-app.get('/products', products.show);
+app.get('/products/', products.show);
 app.post('/purchase', products.addPurchase);
 app.post('/purchase/deletePurchase/:id', products.deletePurchase);
+app.get('/products/:searchQuery', products.search);
 
 //===========================================
 //actions for Sales
@@ -356,17 +357,17 @@ app.get('/mostSellingCategory', function(req, res) {
 //     res.render('error', {layout: false});
 // });
 
-app.get('/search', function(req, res) {
-    connection.query('SELECT product from products where product like "%' + req.query.key + '%"',
-        function(error, rows, fields) {
-            if (error) throw error;
-            var data = [];
-            for (i = 0; i > rows.length; i++) {
-                data.push(rows[i].first_name);
-            }
-            res.end(JSON.stringify(data));
-        });
-});
+
+//     connection.query('SELECT product from products where product like "%' + req.query.key + '%"',
+//         function(error, rows, fields) {
+//             if (error) throw error;
+//             var data = [];
+//             for (i = 0; i > rows.length; i++) {
+//                 data.push(rows[i].first_name);
+//             }
+//             res.end(JSON.stringify(data));
+//         });
+// });
 
 
 var port = process.env.PORT || 3000;
