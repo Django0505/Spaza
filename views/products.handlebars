@@ -1,24 +1,4 @@
 
-<!-- <div id="add-products">
-	
-	<h1>Add a product</h1>
-	<form action="/product" method="POST">
-		Product: <input type="text" name="product_name">
-		<select name="category_id">
-    {{#categories}}
-    <option value="{{category_id}}">{{category_name}}</option>
-    {{/categories}}
-    </select>	
-		<input type="submit">
-	</form>
-</div>
-<h1>Delete a product</h1>
-<form action="/products/update/{{id}}" method="POST">
-	Product: <input type="text" name="product" value="{{Product_name}}">	
-	<input type="submit">
-</form> -->
-
-
 <form class="navbar-form navbar-left">
         <input type="text" id="productSearch"  class="form-control col-lg-8" placeholder="Search">
 </form>
@@ -26,7 +6,7 @@
 {{#if Admin}}
 <div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalAdd">Add New Product</button></div>
 
-<table class="table">
+<table class="table" id="productSearchResults" >
 	   <thead>
         
           <th>Product Id</th>
@@ -35,7 +15,7 @@
           
       
       </thead>
-      <tbody>
+      <tbody >
       	     {{#each products}}
 			<tr>
 			    <td>{{product_id}}</td>

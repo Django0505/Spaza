@@ -277,10 +277,13 @@ app.get('/totalSales', function(req, res) {
         totalSales: totalSales
     });
 });
+
+//=======products
 app.get('/products', products.show);
 app.post('/product', products.addProd);
 app.post('/product/updateProd/:id', products.updateProd);
 app.post('/product/deleteProd/:id', products.deleteProd);
+app.get('/products/:searchQuery', products.search);
 app.get('/regularSales', function(req, res) {
 
     res.render('regularSales', {
@@ -326,17 +329,17 @@ app.post('/supply/deleteSupplier/:id', products.deleteSupplier);
 app.get('/purchasesList', products.purchases);
 
 app.get('/purchasesList', products.suppliers);
-app.get('/products/', products.show);
+//app.get('/products/', products.show);
 app.post('/purchase', products.addPurchase);
 app.post('/purchase/deletePurchase/:id', products.deletePurchase);
-app.get('/products/:searchQuery', products.search);
+
 
 //===========================================
 //actions for Sales
 app.get('/spazaData', products.sales);
 
 app.get('/spazaData', products.suppliers);
-app.get('/products', products.show);
+//app.get('/products', products.show);
 app.post('/sale', products.addSale);
 app.post('/sale/deleteSale/:id', products.deleteSale);
 

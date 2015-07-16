@@ -1,0 +1,22 @@
+{{#if Admin}}
+<br />
+<table class="table" id="productSearchResults" >
+
+      <tbody >
+      	     {{#each products}}
+			<tr>
+			    <td>{{product_id}}</td>
+			    <td>{{product_name}}</td>
+			    <td>{{category_name}}</td>
+			    <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal_{{this.product_id}}">Update</button></td>
+			    <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#myModalDelete_{{this.product_id}}">Delete</button></td>
+          
+			</tr>
+		    {{/each}}
+      </tbody>
+
+</table>
+{{else}}
+  {{msg}}
+{{/if}}
+

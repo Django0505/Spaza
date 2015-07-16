@@ -19,10 +19,12 @@ exports.search = function(req, res, next){
               var Admin = false;
             if (req.session.role == "Admin")
                 Admin = true
-            res.render('searchResults', {
+            res.render('product', {
                 products: results,
+                //async: true,
                 Admin: Admin,
-                msg: "You don't have enough priviledges to view this page!"
+                msg: "You don't have enough priviledges to view this page!",
+                layout: false
                 //layout: false
 
             });
