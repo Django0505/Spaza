@@ -7,28 +7,45 @@
 
 //=======search
 
-exports.search = function(req, res, next){
-    req.getConnection(function(err, connection){
-        if(err)
-                return next(err);
+exports.search = function(req, res, next) {
+    req.getConnection(function(err, connection) {
+        if (err)
+            return next(err);
         var searchQuery = req.params.searchQuery;
         searchQuery = "%" + searchQuery + "%";
         console.log(searchQuery);
-        connection.query("SELECT * from products where product_name LIKE ?",searchQuery, function(err, results){
-            if (err) return next(err);
-              var Admin = false;
-            if (req.session.role == "Admin")
-                Admin = true
-            res.render('product', {
-                products: results,
-                //async: true,
-                Admin: Admin,
-                msg: "You don't have enough priviledges to view this page!",
-                layout: false
-                //layout: false
-
+        if (searchQuery === 'all') {
+            connection.query('SELECT * from products', [], function(err, cat, fields) {
+                if (err)
+                    return next(err);
+                var Admin = false;
+                if (req.session.role == "Admin")
+                    Admin = true
+                res.render('product', {
+                    products: prod,
+                    categories: cat,
+                    Admin: Admin,
+                    msg: "You don't have enough priviledges to view this page!"
+                    //layout: false
+                    
+                });
             });
-        });
+        }
+        else {
+            connection.query("SELECT * from products where product_name LIKE ?", searchQuery, function(err, results) {
+                if (err) return next(err);
+                var Admin = false;
+                if (req.session.role == "Admin")
+                    Admin = true
+                res.render('product', {
+                    products: results,
+                    //async: true,
+                    Admin: Admin,
+                    msg: "You don't have enough priviledges to view this page!",
+                    layout: false
+                });
+            });
+        }
     });
 };
 
@@ -462,7 +479,7 @@ exports.Admin = function(req, res, next) {
     var data = JSON.parse(JSON.stringify(req.body));
     var id = req.params.id;
     req.getConnection(function(err, connection) {
-        connection.query('UPDATE users SET role = "Admin" WHERE userID = ?',id, function(err, rows) {
+        connection.query('UPDATE users SET role = "Admin" WHERE userID = ?', id, function(err, rows) {
             if (err) {
                 console.log("Error Updating : %s ", err);
             }
@@ -476,7 +493,7 @@ exports.notAdmin = function(req, res, next) {
     var data = JSON.parse(JSON.stringify(req.body));
     var id = req.params.id;
     req.getConnection(function(err, connection) {
-        connection.query('UPDATE users SET role = "notAdmin" WHERE userID = ?',id, function(err, rows) {
+        connection.query('UPDATE users SET role = "notAdmin" WHERE userID = ?', id, function(err, rows) {
             if (err) {
                 console.log("Error Updating : %s ", err);
             }

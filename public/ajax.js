@@ -2,14 +2,14 @@
 
 $(document).ready(function() {
    
-	$("#productSearch").keydown(function(){
+	$("#productSearch").keyup(function(){
 			//alert( "Handler for .keydown() called." );
 
 			var searchQuery = $("#productSearch").val();
 			
 			$.get("/products/"+ searchQuery, function(results){
 				$("#productSearchResults").html(results);
-				async: true
+				//async: true
 				//console.log(searchQuery);
 				//console.log(results)
 			});

@@ -231,6 +231,19 @@ app.post('/logout', function(req, res, next) {
 //     res.redirect('login',{ msg:msg});
 
 // }
+//===========hide url
+app.use('/users', function(req, res, next) {
+    if (req.session.user && req.session.role == 'Admin') {
+        if (req.session.role == 'Admin') {
+            Admin = true;
+            console.log("Inside users middleware ========>", Admin);
+        }
+        return next();
+    }
+    // the user is not admin in redirect him to the home page
+    res.redirect('home');
+});
+//==
 
 //==========
 app.use(function(req, res, next) {
@@ -260,7 +273,6 @@ app.use(function(req, res, next) {
     // the user is not logged in redirect him to the login page
     res.redirect('login');
 });
-//===========
 
 
 
@@ -309,7 +321,7 @@ app.post('/Admin/:id', products.Admin);
 app.post('/notAdmin/:id', products.notAdmin);
 
 //app.post('/user/deleteUser/:id', products.deleteUser);
-
+//app.get('/api',products.mostSold);
 //=======================================
 //actions for Categories
 
