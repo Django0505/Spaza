@@ -51,19 +51,20 @@
                             </span>
                             <input id="login-password" type="password" class="form-control" name="password" ></div>
 
-                        <div class="input-group">
+                       {{!--  <div class="input-group">
                             <div class="checkbox">
                                 <label>
-                                    <input id="login-remember" type="checkbox" name="remember" value="1">Remember me</label>
+                                    <input id="login-remember" type="checkbox" name="remember" value="1">Remember me
+                                </label>
                             </div>
-                        </div>
+                        </div> --}}
 
                         <div style="margin-top:10px" class="form-group">
                             <!-- Button -->
 
                             <div class="col-sm-12 controls">
                                 <button  id="btn-login" type="submit" class="btn btn-success">Login</button>
-                                <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
+                               {{!--  <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a> --}}
 
                             </div>
                         </div>
@@ -109,14 +110,20 @@
                                 <input type="text" class="form-control" name="firstname" placeholder="First Name"></div>
                         </div> -->
                         <div class="form-group">
-                            <label for="username" class="col-md-3 control-label">Last Name</label>
+                            <label for="username" class="col-md-3 control-label">Username</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="username" placeholder="User Name"></div>
+                                <input type="text" class="form-control" name="username" placeholder="Username"></div>
                         </div>
-                        <div class="form-group">
+                         <div class="form-group">
                             <label for="password" class="col-md-3 control-label">Password</label>
                             <div class="col-md-9">
-                                <input type="password" class="form-control" name="password" placeholder="Password"></div>
+                                <input type="password" class="form-control" id="password1" name="password" required placeholder="Password" value=""></div>
+                        </div> 
+
+                          <div class="form-group">
+                            <label for="password" class="col-md-3 control-label">Password</label>
+                            <div class="col-md-9">
+                                <input type="password" id="password2" class="form-control" name="password" required  placeholder="Password again ..."></div>
                         </div>
 
                         <!-- <div class="form-group">
@@ -128,22 +135,22 @@
                         <div class="form-group">
                             <!-- Button -->
                             <div class="col-md-offset-3 col-md-9">
-                                <button id="btn-signup" type="submit" class="btn btn-info">
+                                <button id="btn-signup" type="submit"  class="btn btn-info">
                                     <i class="icon-hand-right"></i>
                                     &nbsp Sign Up
                                 </button>
-                                <span style="margin-left:8px;">or</span>
+                                <span style="margin-left:8px;">{{!-- or --}}</span>
                             </div>
                         </div>
 
                         <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
 
-                            <div class="col-md-offset-3 col-md-9">
+                           {{!--   <div class="col-md-offset-3 col-md-9">
                                 <button id="btn-fbsignup" type="button" class="btn btn-primary">
                                     <i class="icon-facebook"></i>
                                     Sign Up with Facebook
                                 </button>
-                            </div>
+                            </div>  --}}
 
                         </div>
 
@@ -154,4 +161,21 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script type="text/javascript">
+window.onload = function () {
+    document.getElementById("password1").onchange = validatePassword;
+    document.getElementById("password2").onchange = validatePassword;
+}
+function validatePassword(){
+var pass2=document.getElementById("password2").value;
+var pass1=document.getElementById("password1").value;
+if(pass1!=pass2)
+    document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+else
+    document.getElementById("password2").setCustomValidity('');  
+//empty string means no validation error
+}
+</script>
+    
+    
 </body>

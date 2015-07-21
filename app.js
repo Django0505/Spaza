@@ -99,7 +99,7 @@ app.use(session({
 //   res.render('users', userData)
 // });
 
-
+//====
 
 //=======
 
@@ -115,16 +115,17 @@ app.post('/signup', function(req, res, next) {
         }
 
         var input = JSON.parse(JSON.stringify(req.body));
+        console.log(input);
         var data = {
             username: input.username,
-            password: input.password,
+            password: input.password[0],
             role: 'notAdmin'
 
         };
 
         //bcrypt the password===
         bcrypt.genSalt(10, function(err, salt) {
-            bcrypt.hash(input.password, salt, function(err, hash) {
+            bcrypt.hash(data.password, salt, function(err, hash) {
                 // Store hash in your password DB. 
                 data.password = hash;
                 connection.query('insert into users set ?', data, function(err, results) {
