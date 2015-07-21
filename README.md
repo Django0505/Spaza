@@ -3,8 +3,10 @@
 # Spaza 
 
 ### In this app we are using :
+#### TravisCI [Continous Intergration]
+#### Gulp [Running tests]
 #### Ajax [For search]
-#### BCrypt [For password hasshing]
+#### BCrypt [For password hashing]
 #### Express-Handlebars [For templating]
 #### MySql [For our database]
 #### ExpressJs [Framework running on Node]
