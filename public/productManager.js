@@ -255,7 +255,7 @@ exports.returnsStockMap = function(purchasesTable) {
 //subtracts the 2 given objects and gives difference
 exports.returnsStockLevels = function(stockMap, productsSoldMap) {
 
-	//console.log(" productsSoldMap : " +  productsSoldMap);
+    //console.log(" productsSoldMap : " +  productsSoldMap);
 
     var stockLevels = {};
 
@@ -264,12 +264,12 @@ exports.returnsStockLevels = function(stockMap, productsSoldMap) {
     // }
 
     for (var key in stockMap) {
-    	//console.log("---> " + Object.keys(productsSoldMap));
-        stockLevels[key] =  productsSoldMap[key] - stockMap[key];
-        
+        //console.log("---> " + Object.keys(productsSoldMap));
+        stockLevels[key] = productsSoldMap[key] - stockMap[key];
+
         //console.log("=> " + productsSoldMap[key]);
-        
-         
+
+
         //console.log(level);
     }
     return stockLevels;

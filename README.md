@@ -4,4 +4,12 @@
 Done with Nellisa stories.
 
 
-# spazanyana
+### In this app we are using :
+## Ajax [For search]
+## BCrypt [For password hasshing]
+## Express-Handlebars [For templating]
+## MySql [For our database]
+## ExpressJs [Framework running on Node]
+# Todo
+#### Passport [For facebook and twitter logging in]
+
