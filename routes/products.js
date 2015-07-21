@@ -14,38 +14,80 @@ exports.search = function(req, res, next) {
         var searchQuery = req.params.searchQuery;
         searchQuery = "%" + searchQuery + "%";
         console.log(searchQuery);
-        if (searchQuery === 'all') {
-            connection.query('SELECT * from products', [], function(err, cat, fields) {
+        //if (searchQuery === 'all') {
+            connection.query('SELECT * from products where product_name LIKE ?', searchQuery, function(err, results) {
                 if (err)
                     return next(err);
                 var Admin = false;
                 if (req.session.role == "Admin")
                     Admin = true
                 res.render('product', {
-                    products: prod,
-                    categories: cat,
-                    Admin: Admin,
-                    msg: "You don't have enough priviledges to view this page!"
-                    //layout: false
-                    
-                });
-            });
-        }
-        else {
-            connection.query("SELECT * from products where product_name LIKE ?", searchQuery, function(err, results) {
-                if (err) return next(err);
-                var Admin = false;
-                if (req.session.role == "Admin")
-                    Admin = true
-                res.render('product', {
                     products: results,
-                    //async: true,
+                    //categories: cat,
                     Admin: Admin,
                     msg: "You don't have enough priviledges to view this page!",
                     layout: false
+                    
                 });
             });
-        }
+        //}
+        // else {
+        //     connection.query("SELECT * from products where product_name LIKE ?", searchQuery, function(err, results) {
+        //         if (err) return next(err);
+        //         var Admin = false;
+        //         if (req.session.role == "Admin")
+        //             Admin = true
+        //         res.render('product', {
+        //             products: results,
+        //             //async: true,
+        //             Admin: Admin,
+        //             msg: "You don't have enough priviledges to view this page!",
+        //             layout: false
+        //         });
+        //     });
+        // }
+    });
+};
+
+//==============searchSales
+exports.searchSales = function(req, res, next) {
+    req.getConnection(function(err, connection) {
+        if (err)
+            return next(err);
+        var searchQuery = req.params.searchQuery;
+        searchQuery = "%" + searchQuery + "%";
+        console.log(searchQuery);
+        //if (searchQuery === 'all') {
+            connection.query('SELECT * from purchase_table where stock_item LIKE ?', searchQuery, function(err, results) {
+                if (err)
+                    return next(err);
+                var Admin = false;
+                if (req.session.role == "Admin")
+                    Admin = true
+                res.render('sales', {
+                    purchase_table: results,
+                    Admin: Admin,
+                    msg: "You don't have enough priviledges to view this page!",
+                    layout: false
+                    
+                });
+            });
+        //}
+        // else {
+        //     connection.query("SELECT * from purchase_table where stock_item LIKE ?", searchQuery, function(err, results) {
+        //         if (err) return next(err);
+        //         var Admin = false;
+        //         if (req.session.role == "Admin")
+        //             Admin = true
+        //         res.render('sales', {
+        //            purchase_table: results,
+        //             //async: true,
+        //             Admin: Admin,
+        //             msg: "You don't have enough priviledges to view this page!",
+        //             layout: false
+        //         });
+        //     });
+        // }
     });
 };
 

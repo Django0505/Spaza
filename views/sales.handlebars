@@ -1,0 +1,32 @@
+
+{{#if Admin}}
+
+<table class="table" id="salesSearchResults">
+	   <thead>
+        
+          <th>Day</th>
+          <th>Date</th>
+          <th>Stock Item</th>
+          <th>Number Sold</th>
+          <th>Sales Price</th>
+          
+      
+      </thead>
+      <tbody>
+      	    {{#each purchase_table}}
+			<tr>
+			    <td>{{day}}</td>
+			    <td>{{date}}</td>
+			    <td>{{stock_item}}</td>
+			    <td>{{no_sold}}</td>
+			    <td>{{sales_price}}</td>
+			</tr>
+		    {{/each}}
+      </tbody>
+
+</table>
+{{else}}
+  {{msg}}
+{{/if}}
+
+

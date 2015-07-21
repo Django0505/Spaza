@@ -295,7 +295,7 @@ app.get('/products', products.show);
 app.post('/product', products.addProd);
 app.post('/product/updateProd/:id', products.updateProd);
 app.post('/product/deleteProd/:id', products.deleteProd);
-app.get('/products/:searchQuery', products.search);
+app.get('/product/:searchQuery', products.search);
 app.get('/regularSales', function(req, res) {
 
     res.render('regularSales', {
@@ -354,7 +354,7 @@ app.get('/spazaData', products.suppliers);
 //app.get('/products', products.show);
 app.post('/sale', products.addSale);
 app.post('/sale/deleteSale/:id', products.deleteSale);
-
+app.get('/sales/:searchQuery', products.searchSales);
 
 app.get('/mostSellingCategory', function(req, res) {
 
