@@ -2,6 +2,15 @@
 <form class="navbar-form navbar-left">
         <input type="text" id="productSearch"  class="form-control col-lg-8" placeholder="Search">
 </form>
+
+<script>
+  
+  $(function () {
+    toastr.info("added product...");
+  })
+
+</script>
+
 <h2>Product list</h2>
 {{#if Admin}}
 <div id="addBtn"><button  type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModalAdd">Add New Product</button></div>
@@ -93,7 +102,7 @@
     </select>
 	     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button class="btn btn-primary" type="submit">Add Product</button>
+        <button class="btn btn-primary" id="toastProduct" type="submit">Add Product</button>
       </div>
 		</form>
       </div>
@@ -139,5 +148,5 @@
      
     </div>
   </div>
-</div>
+  </div>
 {{/products}}

@@ -134,7 +134,7 @@ app.post('/signup', function(req, res, next) {
 
                     res.render('login', {
                         msg: "Successfully signed up",
-                        
+
                         layout: false
                     });
                 });
