@@ -165,7 +165,7 @@ app.get(['/', '/login'], function(req, res) {
         layout: false
     });
 });
-
+app.get('/login/:searchQuery', products.searchUsers);
 
 app.post("/login", function(req, res, next) {
     var input = JSON.parse(JSON.stringify(req.body));
@@ -413,7 +413,8 @@ var server = app.listen(port, function() {
 // );
 
 
-
+// ALTER TABLE table_name
+// MODIFY COLUMN column_name datatype
 
 
 

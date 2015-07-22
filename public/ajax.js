@@ -20,7 +20,7 @@ $(document).ready(function() {
         "hideMethod": "fadeOut"
     }
     //=== Add product toast
-    $('#toastProduct').click(function() {
+    //$('#toastProduct').click(function() {
 
         //toastr.warning('Adding new product...');
         /**
@@ -33,7 +33,7 @@ $(document).ready(function() {
         })
 
         */
-    });
+   // });
 
     //===
     $("#productSearch").keyup(function() {
@@ -54,22 +54,27 @@ $(document).ready(function() {
 
 
     $("#salesSearch").keyup(function() {
-        //alert( "Handler for .keydown() called." );
-
         var searchQuery = $("#salesSearch").val();
-        //  $.get("/spazaData/" + searchQuery, function(results) {				
-        //     $("#salesSearchResults").hide;
-
-        //     //async: true
-        //     //console.log(searchQuery);
-        //     console.log(results)
-        // });
-
         $.get("/sales/" + searchQuery, function(results) {
             $("#salesSearchResults").html(results);
+            console.log(results)
+        });
+    });
 
-            //async: true
-            //console.log(searchQuery);
+
+
+    //=====username search
+       $("#usernameSearch").keyup(function() {
+        var searchQuery = $("#usernameSearch").val();
+        $.get("/login/" + searchQuery, function(results) {
+            //$("#salesSearchResults").html(results);
+            console.log("ajax",results);
+            if(results === searchQuery){
+                $("#sinupButton").hide()
+            }else if(results !== searchQuery){
+               $("#sinupButton").show() 
+            }
+
             console.log(results)
         });
     });
