@@ -99,7 +99,7 @@ app.use(session({
 //   res.render('users', userData)
 // });
 
-//====
+
 
 //=======
 
@@ -115,17 +115,16 @@ app.post('/signup', function(req, res, next) {
         }
 
         var input = JSON.parse(JSON.stringify(req.body));
-        console.log(input);
         var data = {
             username: input.username,
-            password: input.password[0],
+            password: input.password,
             role: 'notAdmin'
 
         };
 
         //bcrypt the password===
         bcrypt.genSalt(10, function(err, salt) {
-            bcrypt.hash(data.password, salt, function(err, hash) {
+            bcrypt.hash(input.password, salt, function(err, hash) {
                 // Store hash in your password DB. 
                 data.password = hash;
                 connection.query('insert into users set ?', data, function(err, results) {
@@ -134,7 +133,6 @@ app.post('/signup', function(req, res, next) {
 
                     res.render('login', {
                         msg: "Successfully signed up",
-
                         layout: false
                     });
                 });
@@ -165,7 +163,7 @@ app.get(['/', '/login'], function(req, res) {
         layout: false
     });
 });
-app.get('/login/:searchQuery', products.searchUsers);
+
 
 app.post("/login", function(req, res, next) {
     var input = JSON.parse(JSON.stringify(req.body));
@@ -244,7 +242,7 @@ app.use('/users', function(req, res, next) {
     }
     // the user is not admin in redirect him to the home page
     res.redirect('home');
-});
+}); 
 //==
 
 //==========
@@ -297,7 +295,7 @@ app.get('/products', products.show);
 app.post('/product', products.addProd);
 app.post('/product/updateProd/:id', products.updateProd);
 app.post('/product/deleteProd/:id', products.deleteProd);
-app.get('/product/:searchQuery', products.search);
+app.get('/products/:searchQuery', products.search);
 app.get('/regularSales', function(req, res) {
 
     res.render('regularSales', {
@@ -356,7 +354,7 @@ app.get('/spazaData', products.suppliers);
 //app.get('/products', products.show);
 app.post('/sale', products.addSale);
 app.post('/sale/deleteSale/:id', products.deleteSale);
-app.get('/sales/:searchQuery', products.searchSales);
+
 
 app.get('/mostSellingCategory', function(req, res) {
 
@@ -413,8 +411,7 @@ var server = app.listen(port, function() {
 // );
 
 
-// ALTER TABLE table_name
-// MODIFY COLUMN column_name datatype
+
 
 
 
