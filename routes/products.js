@@ -67,7 +67,7 @@ exports.searchSales = function(req, res, next) {
                 res.render('sales', {
                     purchase_table: results,
                     Admin: Admin,
-                    msg: "You don't have enough priviledges to view this page!",
+                    msg: "You don't have enough priviledges use search!",
                     layout: false
                     
                 });

@@ -5,7 +5,13 @@ var app = express();
 var session = require('express-session');
 //
 //var passport            = require('./auth');
-Admin = false;
+//will not mention your platform// reduces vulnerabilities//response headers
+//look into referer header
+//cache control header
+//
+app.set('strict routing', true);
+app.set('x-powered-by', false)
+app.set('Admin',false);
 var totalSales = require('./public/totalSold');
 var categories = require('./public/categories.json');
 var tableJs = require('./public/spazaData.json');
@@ -99,7 +105,7 @@ app.use(session({
 //   res.render('users', userData)
 // });
 
-
+//====
 
 //=======
 
@@ -115,16 +121,17 @@ app.post('/signup', function(req, res, next) {
         }
 
         var input = JSON.parse(JSON.stringify(req.body));
+        console.log(input);
         var data = {
             username: input.username,
-            password: input.password,
+            password: input.password[0],
             role: 'notAdmin'
 
         };
 
         //bcrypt the password===
         bcrypt.genSalt(10, function(err, salt) {
-            bcrypt.hash(input.password, salt, function(err, hash) {
+            bcrypt.hash(data.password, salt, function(err, hash) {
                 // Store hash in your password DB. 
                 data.password = hash;
                 connection.query('insert into users set ?', data, function(err, results) {
@@ -133,6 +140,7 @@ app.post('/signup', function(req, res, next) {
 
                     res.render('login', {
                         msg: "Successfully signed up",
+
                         layout: false
                     });
                 });
@@ -242,7 +250,7 @@ app.use('/users', function(req, res, next) {
     }
     // the user is not admin in redirect him to the home page
     res.redirect('home');
-}); 
+});
 //==
 
 //==========
@@ -295,7 +303,7 @@ app.get('/products', products.show);
 app.post('/product', products.addProd);
 app.post('/product/updateProd/:id', products.updateProd);
 app.post('/product/deleteProd/:id', products.deleteProd);
-app.get('/products/:searchQuery', products.search);
+app.get('/product/:searchQuery', products.search);
 app.get('/regularSales', function(req, res) {
 
     res.render('regularSales', {
@@ -354,7 +362,7 @@ app.get('/spazaData', products.suppliers);
 //app.get('/products', products.show);
 app.post('/sale', products.addSale);
 app.post('/sale/deleteSale/:id', products.deleteSale);
-
+app.get('/sales/:searchQuery', products.searchSales);
 
 app.get('/mostSellingCategory', function(req, res) {
 
