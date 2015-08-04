@@ -1,10 +1,26 @@
+
+var mysql = require('mysql');
+var PurchaseConnections = require('./PurchaseConnections');
+var connection =  mysql.createConnection({
+ host: 'localhost',
+        user: 'root',
+        password: 'spot',
+        port: 3306,
+        database: 'spaza'
+});
+
+connection.connect();
+//connection.query('use spaza');
+var purchaseConnections = new PurchaseConnections(connection);
+
+
+
+
+
 // show purchases
 exports.purchases = function(req, res, next) {
 
-    req.getConnection(function(err, connection) {
-        if (err)
-            return next(err);
-        connection.query('SELECT * FROM orders_table', [], function(err, results) {
+    purchaseConnections.showPurchases(function(err, results) {
             if (err) return next(err);
             var Admin = false;
             if (req.session.role == "Admin")
@@ -14,7 +30,7 @@ exports.purchases = function(req, res, next) {
                 orders_table: results
             });
         });
-    });
+
 
 }
 
@@ -22,10 +38,6 @@ exports.purchases = function(req, res, next) {
 
 //==Adding a purchase==
 exports.addPurchase = function(req, res, next) {
-    req.getConnection(function(err, connection) {
-        if (err) {
-            return next(err);
-        }
 
         var input = JSON.parse(JSON.stringify(req.body));
         var data = {
@@ -35,41 +47,34 @@ exports.addPurchase = function(req, res, next) {
             quantity: input.quantity,
             cost: input.cost
         };
-        connection.query('insert into orders_table set ?,total_cost = quantity * cost', data, function(err, results) {
+        purchaseConnections.insertPurchase(data, function(err, results) {
             if (err)
                 return console.log("Error inserting : %s ", err);
 
             res.redirect('/purchasesList')
         });
-    });
 
 }
 //==deleting a purchase==
 exports.deletePurchase = function(req, res, next) {
     var id = req.params.id;
-    req.getConnection(function(err, connection) {
-
-        connection.query('DELETE FROM orders_table WHERE purchase_id = ?', [id], function(err, rows) {
+    purchaseConnections.deletingPurchase([id], function(err, rows) {
             if (err) {
                 console.log("Error Selecting : %s ", err);
             }
             res.redirect('/purchasesList');
         });
-
-    });
 };
 //==updating a purchase==
 exports.updatePurchase = function(req, res, next) {
 
     var data = JSON.parse(JSON.stringify(req.body));
     var id = req.params.id;
-    req.getConnection(function(err, connection) {
-        connection.query('UPDATE products SET ? WHERE id = ?', [data, id], function(err, rows) {
+    purchaseConnections.updatingPurchase([data, id], function(err, rows) {
             if (err) {
                 console.log("Error Updating : %s ", err);
             }
             res.redirect('/products');
         });
 
-    });
 };
