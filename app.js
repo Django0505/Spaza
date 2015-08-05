@@ -6,29 +6,52 @@ app.set('strict routing', true);
 app.set('x-powered-by', false)
 app.set('Admin', false);
 var totalSales = require('./public/totalSold');
-    categories = require('./public/categories.json'),
-    tableJs = require('./public/spazaData.json'),
-    name = require('./public/regularSales.json'),
-    mostSellingCategory = require('./public/mostSellingCategory.json'),
-    mysql = require('mysql'),
-    bodyParser = require('body-parser'),
-    products = require('./routes/products'),
-    orders = require('./routes/orders'),
-    categories = require('./routes/categories'),
-    purchases = require('./routes/purchases'),
-    sales = require('./routes/sales'),
-    suppliers = require('./routes/suppliers'),
-    users = require('./routes/users'),
-    login = require('./routes/login'),
-    bcrypt = require('bcrypt'),
-    myConnection = require('express-myconnection'),
-    dbOptions = {
-        host: 'localhost',
-        user: 'root',
-        password: 'spot',
-        port: 3306,
-        database: 'spaza'
+categories = require('./public/categories.json'),
+tableJs = require('./public/spazaData.json'),
+name = require('./public/regularSales.json'),
+mostSellingCategory = require('./public/mostSellingCategory.json'),
+mysql = require('mysql'),
+bodyParser = require('body-parser'),
+products = require('./routes/products'),
+orders = require('./routes/orders'),
+categories = require('./routes/categories'),
+purchases = require('./routes/purchases'),
+sales = require('./routes/sales'),
+suppliers = require('./routes/suppliers'),
+users = require('./routes/users'),
+login = require('./routes/login'),
+//connections 
+catConnection = require('./routes/CatConnections'),
+ProductConnections = require('./routes/ProductConnections'),
+PurchaseConnections = require('./routes/PurchaseConnections'),
+SupplierConnections = require('./routes/SupplierConnections'),
+connectionProvider = require('./routes/connectionProvider'),
+bcrypt = require('bcrypt'),
+myConnection = require('express-myconnection'),
+dbOptions = {
+    host: 'localhost',
+    user: 'root',
+    password: 'spot',
+    port: 3306,
+    database: 'spaza'
 };
+//=======andre
+var serviceSetupCallback = function(connection) {
+    return {
+            catService: new catConnection(connection),
+            ProductService: new ProductConnection(connection),
+            PurchaseService: new PurchaseConnection(connection),
+            SupplierService: new SupplierConnection(connection)
+
+    }
+};
+
+var myConnectionProvider = new ConnectionProvider(dbOptions, serviceSetupCallback);
+app.use(myConnectionProvider.setupProvider);
+
+//app.use(myConnection(mysql, dbOptions, 'pool'));
+//=======end
+
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
 // parse application/x-www-form-urlencoded
