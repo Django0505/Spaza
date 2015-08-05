@@ -57,6 +57,7 @@ app.get(['/', '/login'], function(req, res) {
 app.post("/login", login.logins);
 app.post('/logout', login.logouts);
 //===========hide url
+app.use('/Catlist', users.usersMiddle);
 app.use('/users', users.usersMiddle);
 app.use(users.checkUser);
 

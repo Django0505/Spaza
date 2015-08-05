@@ -91,7 +91,6 @@ exports.usersMiddle = function(req, res, next) {
     res.redirect('home');
 };
 
-
 // check user role
 exports.checkUser = function(req, res, next) {
     if (req.session.user) {
