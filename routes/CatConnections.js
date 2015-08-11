@@ -6,16 +6,16 @@ var outputQuery = function(query,cb){
 };
 
 var inputQuery = function(query, data, cb){
-connection.query(query, data, cb);
-
+	connection.query(query, data, cb);
 };
+
 this.showCategories = function(cb){
     outputQuery('SELECT * FROM categories', cb);
 
 };
 
 this.insertCategory = function(data, cb){
-    inputQuery('INSERT INTO categories SET ?',data, cb);
+    inputQuery('INSERT INTO categories SET ?', data, cb);
 
 };
 

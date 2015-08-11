@@ -43,7 +43,25 @@ exports.search = function(req, res, next) {
 
 // products
 exports.show = function(req, res, next) {
+    
+    /*
+    join(productConnections.showProducts(),
+         productConnections.showCategories(),
+         function(products, categories){
 
+            var Admin = false;
+            if (req.session.role == "Admin")
+                Admin = true
+            res.render('products', {
+                products: prod,
+                categories: cat,
+                Admin: Admin,
+                msg: "You don't have enough priviledges to view this page!"
+            });
+
+         });
+    */
+    
     productConnections.showProducts(function(err, prod, fields) {
             if (err)
                 return next(err);
