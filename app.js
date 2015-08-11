@@ -46,8 +46,8 @@ var serviceSetupCallback = function(connection) {
     }
 };
 
-var myConnectionProvider = new ConnectionProvider(dbOptions, serviceSetupCallback);
-app.use(myConnectionProvider.setupProvider);
+//var myConnectionProvider = new ConnectionProvider(dbOptions, serviceSetupCallback);
+//app.use(myConnectionProvider.setupProvider);
 
 //app.use(myConnection(mysql, dbOptions, 'pool'));
 //=======end
