@@ -29,6 +29,8 @@
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
     "qunit": "~0.7.5",
-    "toastr": "^2.1.0"
+    "toastr": "^2.1.0",
+    "weather": "^0.1.0",
+    "weather-js": "^1.0.2"
   }
 }

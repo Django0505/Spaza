@@ -8,3 +8,22 @@ exports.multiply = function (number, cb){
 		cb(null, result);
 	},1000);	
 }
+
+
+exports.manualMultiply = function(){
+
+	/*
+	
+	return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest;
+        xhr.addEventListener("error", reject);
+        xhr.addEventListener("load", resolve);
+        xhr.open("GET", url);
+        xhr.send(null);
+    });
+	
+	
+	*/
+
+
+}
