@@ -20,7 +20,7 @@
     "bluebird": "^2.9.34",
     "body-parser": "^1.13.1",
     "express": "^4.12.3",
-    "express-handlebars": "^3.0.0",
+    "express-handlebars": "^7.0.0",
     "express-myconnection": "^1.0.4",
     "express-session": "^1.11.3",
     "mocha": "^2.2.5",
